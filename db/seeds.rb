@@ -52,6 +52,7 @@ sport_bike_helene = Bike.create!(
   location_lost: "Paris",
   status: 0,
   first_search_date: Time.now,
+  color: "Blue",
   user_id: helene.id
 )
 
@@ -63,6 +64,7 @@ electric_bike_ana = Bike.create!(
   location_lost: "Utrecht",
   status: 0,
   first_search_date: Time.now,
+  color: "Black",
   user_id: ana.id
 )
 
@@ -74,6 +76,7 @@ fixie_bike_axel = Bike.create!(
   location_lost: "Brussels",
   status: 0,
   first_search_date: Time.now,
+  color: "Green",
   user_id: axel.id
 )
 
@@ -108,7 +111,7 @@ puts "Creating matches ..."
 
 match01 = Match.create!(
   bike_id: sport_bike_helene.id,
-  markeplace_url: "https://www.leboncoin.fr/",
+  marketplace_url: "https://www.leboncoin.fr/",
   marketplace: "Le bon coin",
   match_score: 90,
   price: 450,
@@ -118,7 +121,7 @@ match01 = Match.create!(
 
 match02 = Match.create!(
   bike_id: sport_bike_helene.id,
-  markeplace_url: "https://buycycle.com/nl-be",
+  marketplace_url: "https://buycycle.com/nl-be",
   marketplace: "Buycycle",
   match_score: 75,
   price: 380,
@@ -128,7 +131,7 @@ match02 = Match.create!(
 
 match03 = Match.create!(
   bike_id: electric_bike_ana.id,
-  markeplace_url: "https://www.2dehands.be/",
+  marketplace_url: "https://www.2dehands.be/",
   marketplace: "2de hands",
   match_score: 87,
   price: 600,
