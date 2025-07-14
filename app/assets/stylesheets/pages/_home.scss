@@ -1,33 +1,90 @@
 // Specific CSS for your home-page
 .hero-section {
   padding: 6rem 0;
-  background-color: $color-blue-secondary;
+  background-color: #e6f0ff; /* fallback if $color-blue-secondary doesn't compile */
+}
 
-  .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: $color-dark-navy;
-  }
+.hero-section .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: $color-dark-navy; /* fallback for $color-dark-navy */
+}
 
-  .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    max-width: 480px;
-    color: $color-dark-navy;
-  }
+.hero-section .hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  color: $color-dark-navy;
+}
 
-  .container {
+.hero-section .container {
   max-width: 1140px;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-  .hero-img {
+.hero-section .hero-img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 0.5rem;
-  }
+}
+
+.numbers-section {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+}
+
+.number-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $color-blue-primary;
+  margin-bottom: 0.5rem;
+}
+
+.number-label {
+  color: $color-dark-navy;
+  margin-bottom: 0;
+}
+
+.how-it-works {
+  background-color: #f8f9fa; /* Light gray */
+}
+
+.how-step .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  background-color: #e9f2ff; /* Soft background */
+  margin: 0 auto;
+}
+
+.how-step .icon i {
+  font-size: 2rem;
+  color: $color-blue-primary;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.testimonial-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cta-section {
+  background-color: $color-blue-primary ;
 }

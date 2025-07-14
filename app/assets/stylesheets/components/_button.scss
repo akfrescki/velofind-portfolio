@@ -31,3 +31,24 @@
     color: #ffffff;
   }
 }
+
+.cta-button {
+  display: inline-block;
+  background-color: #ffffff;
+  color: $color-blue-primary;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border: none;
+
+  &:hover {
+    background-color: #f3f4f6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    color: $color-dark-navy;
+    text-decoration: none;
+  }
+}

@@ -4,8 +4,8 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <h1 class="hero-title">Find your stolen bike</h1>
-        <p class="hero-subtitle">Velofind searches across the internet to find your stolen bike</p>
-        <a href="#" class="btn btn-primary-custom hero-btn">Find your bike</a>
+        <p class="hero-subtitle">Velofind searches across the internet to find your stolen bike.</p>
+        <a href="#search" class="btn btn-primary-custom hero-btn">Find your bike</a>
       </div>
       <div class="col-md-6">
         <div class="hero-image"></div>
@@ -15,14 +15,34 @@
   </div>
 </section>
 
+<!-- numbers Section -->
+<section class="numbers-section">
+  <div class="container">
+    <div class="numbers row d-flex align-items-center">
+      <div class="col text-center">
+        <p class="number-value">700,000+</p>
+        <p class="number-label">Bicycles stolen each year in Europe</p>
+      </div>
+      <div class="col text-center">
+        <p class="number-value">15%</p>
+        <p class="number-label">Recovery rate with our service</p>
+      </div>
+      <div class="col text-center">
+        <p class="number-value">€6.99</p>
+        <p class="number-label">One-time fee to find your bike</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- search form Section -->
-<section class="py-12">
+<section id="search" class="search-form py-12">
   <div class="d-flex justify-content-center align-items-center py-5">
     <div class="card shadow-sm p-4 rounded-4" style="width: 100%; max-width: 600px;">
       <div class="d-flex justify-content-center mb-3">
         <div class="text-center mb-2 mt-4">
-          <h4 class="fw-bold mb-2">Bike Details</h4>
-          <p class="text-muted mb-0">Velofind scans all marketplaces across the internet to find your stolen bike back</p>
+          <h4 class="fw-bold mb-2 text-blue-primary">Bike Details</h4>
+          <p class="text-muted mb-0">Velofind scans all marketplaces across the internet to find your stolen bike.</p>
         </div>
       </div>
 
@@ -59,5 +79,113 @@
         <%= f.button :submit, "Find My Bike", class: "btn btn-primary-custom w-100 mt-2" %>
       <% end %>
     </div>
+  </div>
+</section>
+
+<!-- how it works Section -->
+<section class="how-it-works py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h4 class="fw-bold mb-2">How It Works</h4>
+      <p class="text-muted mb-0">
+        Finding your stolen bike has never been easier. Follow these simple steps to start your search.
+      </p>
+    </div>
+
+    <div class="row text-center">
+      <div class="col-md-3 mb-4">
+        <div class="how-step">
+          <div class="icon mb-3">
+            <%= image_tag("list-icon.svg", alt: "List Icon") %>
+          </div>
+          <h6 class="fw-bold mb-2">Enter Your Details</h6>
+          <p class="text-muted small">Input your bike details</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="how-step">
+          <div class="icon mb-3">
+            <%= image_tag("pay-icon.svg", alt: "Pay Icon") %>
+          </div>
+          <h6 class="fw-bold mb-2">Pay €6.99</h6>
+          <p class="text-muted small">Complete a simple and secure payment to access our search service</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="how-step">
+          <div class="icon mb-3">
+            <%= image_tag("search-icon.svg", alt: "Search Icon") %>
+          </div>
+          <h6 class="fw-bold mb-2">Search Results</h6>
+          <p class="text-muted small">We search across the internet for bikes matching your description</p>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4">
+        <div class="how-step">
+          <div class="icon mb-3">
+            <%= image_tag("recovery-icon.svg", alt: "Recovery Icon") %>
+          </div>
+          <h6 class="fw-bold mb-2">Recover Your Bike</h6>
+          <p class="text-muted small">Contact authorities with the information to help recover your bicycle</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- success stories Section -->
+<section class="success_stories py-5 px-3 px-md-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h4 class="fw-bold mb-2">Success Stories</h4>
+      <p class="text-muted mb-0">Hear from people who have used our service.</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+  <div class="col-md-4 mb-4">
+    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+      <p>"I found my stolen bike within 24 hours of using the Find My Bike service. The €1.99 was absolutely worth it!"</p>
+      <div class="d-flex align-items-center mt-3">
+        <img src="https://i.pravatar.cc/50?img=1" alt="Sarah" class="rounded-circle me-3" width="50" height="50">
+        <div>
+          <strong>Sarah K.</strong><br>
+          <small class="text-muted">Amsterdam</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+      <p>"The police couldn't help me, but thanks to this service I located my bike being sold online and got it back."</p>
+      <div class="d-flex align-items-center mt-3">
+        <img src="https://i.pravatar.cc/50?img=2" alt="Michael" class="rounded-circle me-3" width="50" height="50">
+        <div>
+          <strong>Michael T.</strong><br>
+          <small class="text-muted">Berlin</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+      <p>"So easy to use. I entered my VeloPass code and found my stolen bike listed on a marketplace the same day."</p>
+      <div class="d-flex align-items-center mt-3">
+        <img src="https://i.pravatar.cc/50?img=3" alt="Emma" class="rounded-circle me-3" width="50" height="50">
+        <div>
+          <strong>Emma D.</strong><br>
+          <small class="text-muted">Paris</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 text-white text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Ready to Find Your Bike?</h2>
+    <p class="mb-4">Don't wait – the sooner you start searching, the better chance you have of recovering your stolen bicycle.</p>
+    <a href="#search" class="btn cta-button btn-lg">Start Searching Now</a>
   </div>
 </section>
