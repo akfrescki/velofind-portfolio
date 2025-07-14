@@ -1,10 +1,13 @@
 // Define variables for your color scheme
 
-// For example:
-$red: #FD1015;
-$blue: #0D6EFD;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// Neutral colors
+$color-dark-navy:         #050C36; // Used as black / background-color-black / alternative
+$color-white:             #FFFFFF;
+
+// Brand colors
+$color-blue-primary:      #006EFD; // Primary brand blue (buttons, links)
+$color-blue-secondary:    #E7EAFD; // Light blue background (background-color-secondary)
+$color-blue-tertiary:     #436BF1; // Mid-tone blue (background-color-tertiary)
+
+// Other (if needed)
+$color-gray-light:        #F4F4F4; // Light gray (form backgrounds, dividers)

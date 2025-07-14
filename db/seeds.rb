@@ -52,6 +52,7 @@ sport_bike_helene = Bike.create!(
   location_lost: "Paris",
   status: 0,
   first_search_date: Time.now,
+  color: "Blue",
   user_id: helene.id
 )
 
@@ -63,6 +64,7 @@ electric_bike_ana = Bike.create!(
   location_lost: "Utrecht",
   status: 0,
   first_search_date: Time.now,
+  color: "Black",
   user_id: ana.id
 )
 
@@ -74,6 +76,7 @@ fixie_bike_axel = Bike.create!(
   location_lost: "Brussels",
   status: 0,
   first_search_date: Time.now,
+  color: "Green",
   user_id: axel.id
 )
 

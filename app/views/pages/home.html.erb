@@ -1,2 +1,63 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Hero Section -->
+<section class="hero-section text-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h1 class="hero-title">Find your stolen bike</h1>
+        <p class="hero-subtitle">Velofind searches across the internet to find your stolen bike</p>
+        <a href="#" class="btn btn-primary-custom hero-btn">Find your bike</a>
+      </div>
+      <div class="col-md-6">
+        <div class="hero-image"></div>
+          <%= image_tag ("stolen bike image.jpg"), class: "hero-img img-fluid", alt: "Stolen bike image" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- search form Section -->
+<section class="py-12">
+  <div class="d-flex justify-content-center align-items-center py-5">
+    <div class="card shadow-sm p-4 rounded-4" style="width: 100%; max-width: 600px;">
+      <div class="d-flex justify-content-center mb-3">
+        <div class="text-center mb-2 mt-4">
+          <h4 class="fw-bold mb-2">Bike Details</h4>
+          <p class="text-muted mb-0">Velofind scans all marketplaces across the internet to find your stolen bike back</p>
+        </div>
+      </div>
+
+      <%= simple_form_for @bike, url: bikes_path, html: { multipart: true } do |f| %>
+        <div class="mb-3">
+          <%= f.input :brand, label: "Brand", placeholder: "e.g., Trek, Giant, Specialized", required: true, input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.input :frame_number, label: "Frame Number", placeholder: "Located on the bottom bracket", required: true, input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <%= f.input :model, label: "Model", placeholder: "e.g., FX 3, Defy Advanced", required: true, input_html: { class: "form-control" } %>
+          </div>
+          <div class="col-md-6 mb-3">
+            <%= f.input :color, label: "Color", placeholder: "e.g., Red, Black, Blue", required: true, input_html: { class: "form-control" } %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.input :stolen_date, as: :date, label: "Stolen Date", required: true, input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.input :location_lost, label: "Location Lost", placeholder: "Where it was stolen", required: true, input_html: { class: "form-control" } %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.input :pictures, as: :file, label: "Upload Pictures", input_html: { multiple: true, class: "form-control" } %>
+        </div>
+
+        <%= f.button :submit, "Find My Bike", class: "btn btn-primary-custom w-100 mt-2" %>
+      <% end %>
+    </div>
+  </div>
+</section>
