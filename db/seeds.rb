@@ -108,7 +108,7 @@ puts "Creating matches ..."
 
 match01 = Match.create!(
   bike_id: sport_bike_helene.id,
-  markeplace_url: "https://www.leboncoin.fr/",
+  marketplace_url: "https://www.leboncoin.fr/",
   marketplace: "Le bon coin",
   match_score: 90,
   price: 450,
@@ -118,7 +118,7 @@ match01 = Match.create!(
 
 match02 = Match.create!(
   bike_id: sport_bike_helene.id,
-  markeplace_url: "https://buycycle.com/nl-be",
+  marketplace_url: "https://buycycle.com/nl-be",
   marketplace: "Buycycle",
   match_score: 75,
   price: 380,
@@ -128,7 +128,7 @@ match02 = Match.create!(
 
 match03 = Match.create!(
   bike_id: electric_bike_ana.id,
-  markeplace_url: "https://www.2dehands.be/",
+  marketplace_url: "https://www.2dehands.be/",
   marketplace: "2de hands",
   match_score: 87,
   price: 600,
