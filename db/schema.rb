@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2025_07_13_122657) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,12 +54,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_13_122657) do
     t.date "first_search_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
     t.index ["user_id"], name: "index_bikes_on_user_id"
   end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "bike_id", null: false
-    t.string "markeplace_url"
+    t.string "marketplace_url"
     t.integer "match_score"
     t.string "marketplace"
     t.integer "price"

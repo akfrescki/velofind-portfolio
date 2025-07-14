@@ -1,1 +1,33 @@
 // Specific CSS for your home-page
+.hero-section {
+  padding: 6rem 0;
+  background-color: $color-blue-secondary;
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $color-dark-navy;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    color: $color-dark-navy;
+  }
+
+  .container {
+  max-width: 1140px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+  .hero-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  }
+}
