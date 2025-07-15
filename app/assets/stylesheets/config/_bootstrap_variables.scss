@@ -7,16 +7,24 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $color-gray-light;
 $font-size-base:         1rem;
 
-// Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+// Bootstrap color overrides using Velopass design system
+$body-color: $color-dark-navy;
+$primary: $color-blue-primary;
+$secondary: $color-blue-secondary;
+$tertiary: $color-blue-tertiary;
+$alternative: $color-dark-navy;
+
+// Alert + util colors
+$success: #28a745; // or create your own success color
+$info: $color-blue-secondary;
+$danger: #dc3545;
+$warning: #ffc107;
+
+// Background base
+$body-bg: $color-white;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
