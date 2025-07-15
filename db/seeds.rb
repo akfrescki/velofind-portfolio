@@ -144,19 +144,13 @@ puts "Matches created !"
 puts "Creating reports ..."
 
 report01 = Report.create!(
-  bike_id: sport_bike_helene.id,
-  content: "To be discussed",
   match_id: match01.id
 )
 
 report02 = Report.create!(
-  bike_id: sport_bike_helene.id,
-  content: "To be discussed",
   match_id: match02.id
 )
 report03 = Report.create!(
-  bike_id: electric_bike_ana.id,
-  content: "To be discussed",
   match_id: match03.id
 )
 
