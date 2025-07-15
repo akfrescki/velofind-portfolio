@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_13_153009) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_15_101526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,12 +80,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_13_153009) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.bigint "bike_id", null: false
-    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "match_id", null: false
-    t.index ["bike_id"], name: "index_reports_on_bike_id"
     t.index ["match_id"], name: "index_reports_on_match_id"
   end
 
@@ -108,6 +105,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_13_153009) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bikes", "users"
   add_foreign_key "matches", "bikes"
-  add_foreign_key "reports", "bikes"
   add_foreign_key "reports", "matches"
 end
