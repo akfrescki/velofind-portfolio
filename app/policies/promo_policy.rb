@@ -6,10 +6,10 @@ class PromoPolicy < ApplicationPolicy
   end
 
   def new?
-    user.present?
+    record.user == user
   end
 
   def create?
-    user.present?
+   record.user == user
   end
 end
