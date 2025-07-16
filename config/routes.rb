@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard', as: :dashboard
 
-  resources :promos, only: [:index, :new, :create]
+  resources :promos, only: [:index]
 end
