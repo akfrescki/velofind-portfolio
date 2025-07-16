@@ -1,0 +1,39 @@
+// Specific CSS for your dashboard-page
+body {
+  background-color: $color-gray-light;
+}
+
+.text-blue {
+  color: $color-blue-primary;
+}
+
+.tab-container {
+  background-color: #f1f5f9; // medium gray
+  padding: 4px;
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #64748b;
+  transition: background-color 0.2s ease;
+  margin-right: 4px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+}
+
+.tab:hover {
+  background-color: #e2e8f0;
+}
+
+.tab.active {
+  background-color: #ffffff;
+  color: $color-dark-navy;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
