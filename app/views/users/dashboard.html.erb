@@ -2,17 +2,17 @@
 <div class="container my-5">
   <h1 class="h3 mb-2 text-blue">Search Dashboard</h1>
   <p class="text-muted mb-4">
-  Monitoring for your
-  <% @bikes.each do |bike| %>
-    <strong><%= bike.brand %> <%= bike.model %></strong>
-  <% end %>
-  • Frame:
-  <% @bikes.each do |bike| %>
-  <strong><%= bike.frame_number %></strong>
-  <% end %>
-</p>
+    Monitoring for your
+    <% @bikes.each do |bike| %>
+      <strong><%= bike.brand %> <%= bike.model %></strong>
+    <% end %>
+    • Frame:
+    <% @bikes.each do |bike| %>
+      <strong><%= bike.frame_number %></strong>
+    <% end %>
+  </p>
 
-<!-- alert -->
+  <!-- alert -->
   <div class="matches-alert alert-warning mb-3" role="alert">
     <div>
       <strong>Potential matches found!</strong>
@@ -20,13 +20,13 @@
     </div>
   </div>
 
-<!-- navbar -->
+  <!-- navbar -->
   <div class="tab-container d-flex justify-content-center py-2 mb-4">
     <a href="#" class="tab active">Overview</a>
     <a href="#" class="tab">Matches (3)</a>
   </div>
 
-<!-- dashboard cards -->
+  <!-- dashboard cards -->
   <div class="row g-3">
     <div class="col-md-3">
       <div class="card text-center">
@@ -76,4 +76,21 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- discounts section -->
+<div class="container my-5">
+  <h2 class="h5 mb-3">Discounts</h2>
+
+  <% @promos.each do |promo| %>
+    <div class="card mb-3">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        <div>
+          <strong><%= promo.name %></strong>
+          <p class="mb-0 text-muted"><%= promo.description %></p>
+        </div>
+        <%= link_to "Get Promo code", promo.website_url, class: "btn btn-light border", target: "_blank", rel: "noopener" %>
+      </div>
+    </div>
+  <% end %>
 </div>

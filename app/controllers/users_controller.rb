@@ -5,5 +5,6 @@ class UsersController < ApplicationController
     @user = current_user
     authorize @user
     @bikes = @user.bikes
+    @promos = policy_scope(Promo)
   end
 end
