@@ -5,7 +5,8 @@
       <div class="col-md-6">
         <h1 class="hero-title">Find your stolen bike</h1>
         <p class="hero-subtitle">Velofind searches across the internet to find your stolen bike.</p>
-        <a href="#search" class="btn btn-primary-custom hero-btn">Find your bike</a>
+        <a href="#search" class="btn btn-primary-custom hero-btn me-2">Find your bike</a>
+        <a href="#how-it-works" class="btn btn-outline-custom hero-btn">Learn more</a>
       </div>
       <div class="col-md-6">
         <div class="hero-image"></div>
@@ -65,7 +66,9 @@
         </div>
 
         <div class="mb-3">
-          <%= f.input :stolen_date, as: :date, label: "Stolen Date", required: true, input_html: { class: "form-control" } %>
+          <%= f.input :stolen_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
         </div>
 
         <div class="mb-3">
@@ -83,7 +86,7 @@
 </section>
 
 <!-- how it works Section -->
-<section class="how-it-works py-5">
+<section id="how-it-works" class="how-it-works py-5">
   <div class="container">
     <div class="text-center mb-5">
       <h4 class="fw-bold mb-2">How It Works</h4>
