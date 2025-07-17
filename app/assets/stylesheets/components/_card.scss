@@ -1,0 +1,15 @@
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
