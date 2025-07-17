@@ -8,7 +8,7 @@ body {
 }
 
 .tab-container {
-  background-color: #f1f5f9; // medium gray
+  background-color: $color-gray-medium;
   padding: 4px;
   border-radius: 8px;
   display: inline-flex;
