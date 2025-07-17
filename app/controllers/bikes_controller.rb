@@ -1,17 +1,17 @@
 class BikesController < ApplicationController
   def create
-  @bike = Bike.new(bike_params)
+    @bike = Bike.new(bike_params)
 
-  if @bike.save
-    redirect_to root_path, notice: "Bike submitted successfully."
-  else
-    render :new, status: :unprocessable_entity
+    if @bike.save
+      redirect_to root_path, notice: "Bike submitted successfully."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
-end
 
-private
+  private
 
-def bike_params
-  params.require(:bike).permit(:brand, :model, :frame_number, :color, :bike_type, pictures: [])
-end
+  def bike_params
+    params.require(:bike).permit(:brand, :model, :frame_number, :color, :bike_type, pictures: [])
+  end
 end

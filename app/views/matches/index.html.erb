@@ -1,0 +1,11 @@
+<section class="matches-section py-5 px-3 px-md-5">
+  <div class="row justify-content-center">
+    <% if @matches.any? %>
+      <% @matches.each_with_index do |match, index| %>
+        <%= render partial: "match", locals: { match: match, index: index } %>
+      <% end %>
+    <% else %>
+      <p>No matches found yet.</p>
+    <% end %>
+  </div>
+</div>
