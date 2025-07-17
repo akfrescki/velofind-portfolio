@@ -89,7 +89,30 @@
           <strong><%= promo.name %></strong>
           <p class="mb-0 text-muted"><%= promo.description %></p>
         </div>
-        <%= link_to "Get Promo code", promo.website_url, class: "btn btn-light border", target: "_blank", rel: "noopener" %>
+        <button class="btn btn-light border" data-bs-toggle="modal" data-bs-target="#promoModal-<%= promo.id %>">
+          Get Promo code
+        </button>
+      </div>
+    </div>
+
+    <!-- Promo Modal -->
+    <div class="modal fade" id="promoModal-<%= promo.id %>" tabindex="-1" aria-labelledby="promoModalLabel-<%= promo.id %>" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="promoModalLabel-<%= promo.id %>">Your Promo Code</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="d-flex justify-content-center align-items-center mb-3 gap-2">
+              <h4 class="mb-0 fw-bold"><%= promo.promocode.upcase %></h4>
+              <button class="btn btn-outline-primary btn-sm" onclick="navigator.clipboard.writeText('<%= promo.promocode.upcase %>')" aria-label="Copy promo code">
+                <i class="bi bi-clipboard"></i>
+              </button>
+            </div>
+            <%= link_to "Go to the page to buy product", promo.website_url, class: "text-decoration-none", target: "_blank", rel: "noopener" %>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
