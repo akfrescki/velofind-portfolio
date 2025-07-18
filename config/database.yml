@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: velofind_production
-  username: velofind
-  password: <%= ENV["VELOFIND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
