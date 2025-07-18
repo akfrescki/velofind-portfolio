@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <%= simple_form_for @bike, url: bikes_path, html: { multipart: true } do |f| %>
+      <%= simple_form_for @bike, url: bikes_path, html: { multipart: true, data: { turbo: false } } do |f| %>
         <div class="mb-3">
           <%= f.input :brand, label: "Brand", placeholder: "e.g., Trek, Giant, Specialized", required: true, input_html: { class: "form-control" } %>
         </div>
