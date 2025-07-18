@@ -10,6 +10,6 @@ class PromoPolicy < ApplicationPolicy
   end
 
   def create?
-   record.user == user
+    record.user == user
   end
 end
