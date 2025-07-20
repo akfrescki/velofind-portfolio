@@ -1,14 +1,14 @@
 // Specific CSS for your home-page
 .hero-section {
   padding: 6rem 0;
-  background-color: #e6f0ff; /* fallback if $color-blue-secondary doesn't compile */
+  background-color: $color-blue-secondary;
 }
 
 .hero-section .hero-title {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: $color-dark-navy; /* fallback for $color-dark-navy */
+  color: $color-dark-navy;
 }
 
 .hero-section .hero-subtitle {
@@ -33,7 +33,7 @@
 }
 
 .numbers-section {
-  background-color: #f8f9fa;
+  background-color: $color-gray-medium;
   padding: 3rem 0;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .how-it-works {
-  background-color: #f8f9fa; /* Light gray */
+  background-color: $color-gray-medium;
 }
 
 .how-step .icon {
@@ -69,22 +69,6 @@
   color: $color-blue-primary;
 }
 
-.testimonial-card {
-  background-color: #fff;
-  border-radius: 12px;
-  transition: box-shadow 0.2s;
-}
-
-.testimonial-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.testimonial-card p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-}
-
 .cta-section {
-  background-color: $color-blue-primary ;
+  background-color: $color-blue-primary;
 }

@@ -155,3 +155,35 @@ report03 = Report.create!(
 )
 
 puts "Reports created"
+
+puts "Creating Promos ..."
+
+lock_promo = Promo.create!(
+  name: "Kryptonite Evolution 1090 - 90cm",
+  description: "A super strong lock, perfect to protect your bike from theft",
+  promocode: "VeloFind-Summer-1",
+  website_url: "https://upway.be/products/chane-kryptonite-evolution-1090-90cm"
+)
+
+helmet_promo = Promo.create!(
+  name: "Black Helmet Kask Sintesi",
+  description: "A very elegant helmet, comfortable and protective",
+  promocode: "VeloFind-Summer-2",
+  website_url: "https://www.bobshop.com/fr/kask/casque-sintesi/noir/"
+)
+
+light_promo = Promo.create!(
+  name: "Led lamps for Bike - front and back",
+  description: "Rechargeable USB lamps, with different intensity and options",
+  promocode: "VeloFind-Summer-3",
+  website_url: "https://www.decathlon.be/fr/p/mp/tikkens/eclairage-velo-led-lumiere-velo-set-lampe-arriere-et-avant/_/R-p-e02f3e19-fc5e-4ce7-86c1-66d8725419c2?mc=e02f3e19-fc5e-4ce7-86c1-66d8725419c2_c1&c=noir"
+)
+
+bonus_lock_promo = Promo.create!(
+  name: "Kryptonite U-Lock Mini-7 with Flex",
+  description: "Compact and strong U-lock with cable — perfect for urban bikers",
+  promocode: "VeloFind-Bonus-4",
+  website_url: "https://example.com/kryptonite-u-lock-mini-7"
+)
+
+puts "Promos created !"

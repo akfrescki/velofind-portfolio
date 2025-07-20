@@ -1,17 +1,32 @@
 class BikesController < ApplicationController
   def create
     @bike = Bike.new(bike_params)
+    @bike.user = current_user
+    @bike.status = "lost"
+    @bike.first_search_date = Date.today
+
+    authorize @bike
 
     if @bike.save
-      redirect_to root_path, notice: "Bike submitted successfully."
+      redirect_to dashboard_path, notice: "Bike submitted successfully."
     else
-      render :new, status: :unprocessable_entity
+      render "pages/home", status: :unprocessable_entity
     end
   end
 
   private
 
   def bike_params
-    params.require(:bike).permit(:brand, :model, :frame_number, :color, :bike_type, pictures: [])
+    params.require(:bike).permit(
+    :brand,
+    :frame_number,
+    :model,
+    :color,
+    :stolen_date,
+    :location_lost,
+    :status,
+    :first_search_date,
+    pictures: []
+    )
   end
 end

@@ -1,40 +1,41 @@
 <div class="col-md-10 mb-4">
   <div class="match-card bg-white border rounded-4 shadow-sm p-4">
-    <div class="row">
+    <% @matches.each do |match| %>
+      <div class="row">
 
-      <!-- LEFT SIDE: Text info -->
-      <div class="col-md-6">
-        <!-- Match title + score + time aligned in one row -->
-        <div class="d-flex justify-content-between align-items-start mb-3">
-          <div class="d-flex align-items-center gap-2">
-            <h5 class="fw-bold mb-0">Match #<%= index + 1 %></h5>
-            <span class="badge bg-danger text-white"><%= match.match_score %>% match</span>
+        <!-- LEFT SIDE: Text info -->
+        <div class="col-md-6">
+          <!-- Match title + score + time aligned in one row -->
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <h5 class="fw-bold mb-0">Match #<%= index + 1 %></h5>
+              <span class="badge bg-danger text-white"><%= match.match_score %>% match</span>
+            </div>
+            <small class="text-muted">Found <%= time_ago_in_words(match.created_at) %> ago</small>
           </div>
-          <small class="text-muted">Found <%= time_ago_in_words(match.created_at) %> ago</small>
+
+          <%# Match found, details %>
+          <div class="mb-3">
+            <p class="mb-2"><strong>Platform:</strong> <%= match.marketplace %></p>
+            <p class="mb-2"><strong>Price:</strong> €<%= match.price %></p>
+            <p class="mb-2"><strong>Seller:</strong> <%= match.seller %></p>
+            <p class=""><strong>Location:</strong> <%= match.location %></p>
+          </div>
         </div>
 
-        <%# Match found, details %>
-        <div class="mb-3">
-          <p class="mb-2"><strong>Platform:</strong> <%= match.marketplace %></p>
-          <p class="mb-2"><strong>Price:</strong> €<%= match.price %></p>
-          <p class="mb-2"><strong>Seller:</strong> <%= match.seller %></p>
-          <p class=""><strong>Location:</strong> <%= match.location %></p>
+        <!-- RIGHT SIDE: Image + buttons -->
+        <div class="col-md-6 d-flex flex-column justify-content-between">
+          <div class="bg-light rounded d-flex align-items-center justify-content-center mb-3" style="height: 180px;">
+            <span class="text-muted">Image placeholder</span>
+          </div>
+
+          <div class="d-flex gap-2">
+            <%# buttons without any action %>
+            <%= link_to "Report Stolen", bike_match_reports_path(@bike, match), class: "btn cta-button btn-lg w-100", style: "background-color: red; color: white;"%>
+            <%= link_to "Go to Ad", "#", class: "btn cta-button btn-lg w-100", style: "background-color: grey; color: white;" %>
+          </div>
         </div>
       </div>
-
-      <!-- RIGHT SIDE: Image + buttons -->
-      <div class="col-md-6 d-flex flex-column justify-content-between">
-        <div class="bg-light rounded d-flex align-items-center justify-content-center mb-3" style="height: 180px;">
-          <span class="text-muted">Image placeholder</span>
-        </div>
-
-        <div class="d-flex gap-2">
-          <%# buttons without any action %>
-          <%= link_to "Report Stolen", "#", class: "btn cta-button btn-lg w-100", style: "background-color: red; color: white;"%>
-          <%= link_to "Go to Ad", "#", class: "btn cta-button btn-lg w-100", style: "background-color: grey; color: white;" %>
-        </div>
-      </div>
-
-    </div>
+    <% end %>
   </div>
 </div>

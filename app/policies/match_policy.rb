@@ -11,4 +11,8 @@ class MatchPolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def index?
+    record.bike.user == user
+  end
 end

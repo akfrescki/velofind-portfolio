@@ -5,7 +5,8 @@
       <div class="col-md-6">
         <h1 class="hero-title">Find your stolen bike</h1>
         <p class="hero-subtitle">Velofind searches across the internet to find your stolen bike.</p>
-        <a href="#search" class="btn btn-primary-custom hero-btn">Find your bike</a>
+        <a href="#search" class="btn btn-primary-custom hero-btn me-2">Find your bike</a>
+        <a href="#how-it-works" class="btn btn-outline-custom hero-btn">Learn more</a>
       </div>
       <div class="col-md-6">
         <div class="hero-image"></div>
@@ -46,7 +47,7 @@
         </div>
       </div>
 
-      <%= simple_form_for @bike, url: bikes_path, html: { multipart: true } do |f| %>
+      <%= simple_form_for @bike, url: bikes_path, html: { multipart: true, data: { turbo: false } } do |f| %>
         <div class="mb-3">
           <%= f.input :brand, label: "Brand", placeholder: "e.g., Trek, Giant, Specialized", required: true, input_html: { class: "form-control" } %>
         </div>
@@ -65,7 +66,9 @@
         </div>
 
         <div class="mb-3">
-          <%= f.input :stolen_date, as: :date, label: "Stolen Date", required: true, input_html: { class: "form-control" } %>
+          <%= f.input :stolen_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
         </div>
 
         <div class="mb-3">
@@ -83,7 +86,7 @@
 </section>
 
 <!-- how it works Section -->
-<section class="how-it-works py-5">
+<section id="how-it-works" class="how-it-works py-5">
   <div class="container">
     <div class="text-center mb-5">
       <h4 class="fw-bold mb-2">How It Works</h4>
@@ -144,7 +147,7 @@
 
   <div class="row justify-content-center">
   <div class="col-md-4 mb-4">
-    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+    <div class="card bg-white border p-4 rounded-4 shadow-sm">
       <p>"I found my stolen bike within 24 hours of using the Find My Bike service. The €1.99 was absolutely worth it!"</p>
       <div class="d-flex align-items-center mt-3">
         <img src="https://i.pravatar.cc/50?img=1" alt="Sarah" class="rounded-circle me-3" width="50" height="50">
@@ -156,7 +159,7 @@
     </div>
   </div>
   <div class="col-md-4 mb-4">
-    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+    <div class="card bg-white border p-4 rounded-4 shadow-sm">
       <p>"The police couldn't help me, but thanks to this service I located my bike being sold online and got it back."</p>
       <div class="d-flex align-items-center mt-3">
         <img src="https://i.pravatar.cc/50?img=2" alt="Michael" class="rounded-circle me-3" width="50" height="50">
@@ -168,7 +171,7 @@
     </div>
   </div>
   <div class="col-md-4 mb-4">
-    <div class="testimonial-card bg-white border p-4 rounded-4 shadow-sm">
+    <div class="card bg-white border p-4 rounded-4 shadow-sm">
       <p>"So easy to use. I entered my VeloPass code and found my stolen bike listed on a marketplace the same day."</p>
       <div class="d-flex align-items-center mt-3">
         <img src="https://i.pravatar.cc/50?img=3" alt="Emma" class="rounded-circle me-3" width="50" height="50">
