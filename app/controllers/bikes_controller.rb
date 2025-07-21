@@ -14,19 +14,30 @@ class BikesController < ApplicationController
     end
   end
 
+  def update
+    @bike = Bike.find(params[:id])
+    authorize @bike
+
+    if @bike.update(bike_params)
+      redirect_to dashboard_path, notice: "Bike updated successfully."
+    else
+      redirect_to dashboard_path, alert: "Update failed."
+    end
+  end
+
   private
 
   def bike_params
     params.require(:bike).permit(
-    :brand,
-    :frame_number,
-    :model,
-    :color,
-    :stolen_date,
-    :location_lost,
-    :status,
-    :first_search_date,
-    pictures: []
+      :brand,
+      :frame_number,
+      :model,
+      :color,
+      :stolen_date,
+      :location_lost,
+      :status,
+      :first_search_date,
+      pictures: []
     )
   end
 end
