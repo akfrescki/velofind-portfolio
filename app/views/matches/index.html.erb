@@ -9,3 +9,29 @@
     <% end %>
   </div>
 </div>
+
+<!-- Payment pop-up -->
+<% unless @has_paid %>
+  <div class="modal fade show d-block" id="paymentModalBackdrop" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(6px);">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow rounded-4">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Payment details</h5>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3">Pay €6.99 to view matches for this bike.</p>
+          <%= form_with url: orders_path(bike_id: @bike.id), method: :post do %>
+            <%= submit_tag "Pay €6.99", class: "btn btn-primary w-100" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disable background scroll -->
+  <style>
+    body {
+      overflow: hidden;
+    }
+  </style>
+<% end %>
