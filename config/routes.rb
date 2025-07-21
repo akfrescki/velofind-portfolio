@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: 'users#dashboard', as: :dashboard
+  get '/orders/checkout', to: 'orders#checkout', as: :checkout_order
+
 
   resources :promos, only: [:index]
+  resources :orders, only: [:show, :create]
 end

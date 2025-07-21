@@ -1,9 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon shadow-sm sticky-top">
   <div class="container-fluid">
+
     <!-- Velofind Logo -->
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <%= cl_image_tag("velofindLOGOOFFICIAL_dmhiry", class: "logo-icon me-2", alt: "VeloFindLogo")  %>
     <% end %>
+
 
     <!-- Right side nav bar -->
     <div class="navbar-nav ms-auto d-flex align-items-center">
@@ -11,11 +13,13 @@
         <% if user_signed_in? %>
 
           <!-- Matches -->
+
           <% if current_user.bikes.any? %>
             <li class="nav-item">
               <%= link_to "My Matches", bike_matches_path(current_user.bikes.first), class: "nav-link hover-shadow" %>
             </li>
           <% end %>
+
 
           <!-- Dashboard -->
           <li class="nav-item">
@@ -32,6 +36,7 @@
           <%# Drop down buttons %>
           <li class="nav-item dropdown">
           <a href="#" class="menu-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
             <%= cl_image_tag("Menu_pnldxz", class: "dropdown-icon", alt: "User Menu") %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
