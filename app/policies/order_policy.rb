@@ -1,4 +1,4 @@
-class BikePolicy < ApplicationPolicy
+class OrderPolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -7,20 +7,12 @@ class BikePolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     # NOTE: Be explicit about which records you allow access to!
-    def resolve
-      scope.where(user: user)
-    end
+    # def resolve
+    #   scope.all
+    # end
   end
 
-  def create?
-    user.present?
-  end
-
-  def show?
-    record.user == user
-  end
-
-  def index?
-    record.user == user
+  def checkout?
+    record.bike.user == user
   end
 end

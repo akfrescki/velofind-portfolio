@@ -11,6 +11,7 @@
 Report.destroy_all
 Match.destroy_all
 Promo.destroy_all
+Order.destroy_all
 Bike.destroy_all
 User.destroy_all
 
