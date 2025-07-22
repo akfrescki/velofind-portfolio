@@ -16,15 +16,6 @@
     </div>
   <% end %>
 
-  <div class="tab-container d-flex justify-content-center py-2 mb-4">
-    <a href="#" class="tab active">Overview</a>
-    <% if @bikes.any? %>
-      <div class="tab">
-        <%= link_to "Matches", bike_matches_path(@bikes.first) %>
-      </div>
-    <% end %>
-  </div>
-
   <!-- Dashboard cards  -->
   <div class="row g-3">
     <!-- Days Remaining -->
@@ -81,6 +72,82 @@
   </div>
 </div>
 
+<!-- bikes -->
+<div class="container my-5">
+  <h2 class="h5 mb-3">Bikes</h2>
+
+  <% @bikes.each do |bike| %>
+    <div class="card mb-3">
+      <div class="card-body d-flex justify-content-between align-items-center">
+
+        <% if bike.pictures.any? %>
+        <div class="me-3">
+          <%= image_tag bike.pictures.first.url, alt: "Bike photo", class: "img-thumbnail", style: "width: 120px; height: auto;" %>
+        </div>
+      <% end %>
+
+      <div class="d-flex justify-content-between w-100 align-items-center">
+        <div>
+          <p class="mb-1"><strong>Brand:</strong> <%= bike.brand %></p>
+          <p class="mb-1"><strong>Frame:</strong> <%= bike.frame_number %></p>
+          <p class="mb-1"><strong>Model:</strong> <%= bike.model %></p>
+          <p class="mb-1"><strong>Color:</strong> <%= bike.color %></p>
+        </div>
+      </div>
+        <div class="d-flex gap-2">
+          <%= link_to "Matches (#{bike.matches.count})", bike_matches_path(bike), class: "btn btn-primary-custom" %>
+          <button class="btn btn-outline-custom" data-bs-toggle="modal" data-bs-target="#editBikeModal-<%= bike.id %>">
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Bike Modal -->
+    <div class="modal fade" id="editBikeModal-<%= bike.id %>" tabindex="-1" aria-labelledby="editBikeModalLabel-<%= bike.id %>" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content p-3">
+          <div class="modal-header border-0">
+            <h5 class="modal-title" id="editBikeModalLabel-<%= bike.id %>">Edit Bike Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <%= simple_form_for bike, url: bike_path(bike), method: :patch, html: { class: 'modal-form' } do |f| %>
+            <div class="modal-body">
+              <div class="mb-3">
+                <%= f.input :brand, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :frame_number, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :model, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :color, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :stolen_date,
+                  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :location_lost, input_html: { class: "form-control" }, label_html: { class: "form-label" } %>
+              </div>
+              <div class="mb-3">
+                <%= f.input :pictures, as: :file, label: "Upload Pictures", input_html: { multiple: true, class: "form-control" } %>
+              </div>
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button>
+              <%= f.button :submit, "Save changes", class: "btn btn-primary-custom" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
 <!-- discounts section -->
 <div class="container my-5">
   <h2 class="h5 mb-3">Discounts</h2>
@@ -92,7 +159,7 @@
           <strong><%= promo.name %></strong>
           <p class="mb-0 text-muted"><%= promo.description %></p>
         </div>
-        <button class="btn btn-light rounded-4 border" data-bs-toggle="modal" data-bs-target="#promoModal-<%= promo.id %>">
+        <button class="btn btn-outline-custom" data-bs-toggle="modal" data-bs-target="#promoModal-<%= promo.id %>">
           Get Promo code
         </button>
       </div>
@@ -116,62 +183,6 @@
             </div>
             <%= link_to "Go to the page to buy product", promo.website_url, class: "text-decoration-none", target: "_blank", rel: "noopener" %>
           </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<!-- bikes with edit buttons -->
-<div class="container my-5">
-  <h2 class="h5 mb-3">Bikes</h2>
-
-  <% @bikes.each do |bike| %>
-    <div class="card mb-3">
-      <div class="card-body d-flex justify-content-between align-items-center">
-        <div>
-          <p class="mb-1"><strong>Brand:</strong> <%= bike.brand %></p>
-          <p class="mb-1"><strong>Model:</strong> <%= bike.model %></p>
-          <p class="mb-1"><strong>Color:</strong> <%= bike.color %></p>
-        </div>
-        <div class="d-flex gap-2">
-          <%= link_to "#{bike.matches.count} Matches", bike_matches_path(bike), class: "btn btn-outline-secondary" %>
-          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editBikeModal-<%= bike.id %>">
-            Edit
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Edit Bike Modal -->
-    <div class="modal fade" id="editBikeModal-<%= bike.id %>" tabindex="-1" aria-labelledby="editBikeModalLabel-<%= bike.id %>" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content p-3">
-          <div class="modal-header border-0">
-            <h5 class="modal-title" id="editBikeModalLabel-<%= bike.id %>">Edit Bike Details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <%= form_with(model: bike, url: bike_path(bike), method: :patch, local: true) do |f| %>
-            <div class="modal-body">
-              <div class="mb-3">
-                <%= f.label :brand %>
-                <%= f.text_field :brand, class: "form-control" %>
-              </div>
-              <div class="mb-3">
-                <%= f.label :model %>
-                <%= f.text_field :model, class: "form-control" %>
-              </div>
-              <div class="mb-3">
-                <%= f.label :color %>
-                <%= f.text_field :color, class: "form-control" %>
-              </div>
-            </div>
-            <div class="modal-footer border-0">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <%= f.submit "Save changes", class: "btn btn-primary" %>
-            </div>
-          <% end %>
         </div>
       </div>
     </div>
