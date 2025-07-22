@@ -15,4 +15,8 @@ class MatchPolicy < ApplicationPolicy
   def index?
     record.bike.user == user
   end
+
+  def new?
+    record.bike.user == user
+  end
 end
