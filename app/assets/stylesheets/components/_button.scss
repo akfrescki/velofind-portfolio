@@ -6,6 +6,10 @@
   font-size: 1.125rem;
   border-radius: 0.5rem;
   border: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $color-dark-navy; // slightly lighter
