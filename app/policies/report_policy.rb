@@ -13,10 +13,23 @@ class ReportPolicy < ApplicationPolicy
   end
 
   def new?
-    record.user == user
+    record.match.bike.user == user
   end
 
   def create?
-    record.report.match.bike.user == user
+    record.match.bike.user == user
+  end
+
+  def show?
+    Rails.logger.debug "=== Pundit DEBUG ==="
+    Rails.logger.debug "User: #{user.id}"
+    Rails.logger.debug "Report ID: #{record.id}"
+    Rails.logger.debug "Match user ID: #{record.match.bike.user.id}"
+
+    record.match.bike.user == user
+  end
+
+  def index?
+    record.match.bike.user == user
   end
 end

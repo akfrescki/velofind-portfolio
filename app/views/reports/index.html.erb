@@ -1,1 +1,28 @@
-hello
+<div class="container my-5">
+  <h2 class="h5 mb-3">Police Reports</h2>
+
+  <% @reports.each do |report| %>
+    <div class="card mb-3">
+      <div class="d-flex justify-content-between w-100 align-items-center">
+        <div class="py-2 m-2">
+          <p class="mb-1"><strong>Brand:</strong> <%= report.match.bike.brand %></p>
+          <p class="mb-1"><strong>Frame:</strong> <%= report.match.bike.frame_number %></p>
+          <p class="mb-1"><strong>Model:</strong> <%= report.match.bike.model %></p>
+          <p class="mb-1"><strong>Color:</strong> <%= report.match.bike.color %></p>
+          <p class="mb-1"><strong>Marketplace:</strong> <%= report.match.marketplace %></p>
+          <p class="mb-1"><strong>Seller:</strong> <%= report.match.seller %></p>
+          <p class="mb-1"><strong>User ID:</strong> <%= report.match.bike.user.id %></p> <!-- for testing purposes-->
+          <p class="mb-1"><strong>Report ID:</strong> <%= report.id %></p> <!-- for testing purposes-->
+        </div>
+      </div>
+      <div class="d-flex justify-content-between w-100 align-items-center">
+        <div class="btn btn-primary-custom">
+          <%= link_to "Vizualize PDF", bike_match_report_path(report.match.bike.id, report.match.id, report.id), target: "_blank" %>
+        </div>
+        <div class="btn btn-primary-custom">
+          <%= link_to "Download PDF", bike_match_report_path(report.match.bike.id, report.match.id, report.id, format: :pdf), target: "_blank" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

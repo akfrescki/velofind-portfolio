@@ -16,50 +16,55 @@
 
 <div class="container d-flex flex-column align-items-center">
 <!-- Overview and Police Report -->
-  <div class="tab-container d-flex justify-content-center py-1 mb-1 w-50">
-    <a href="#" class="tab">Overview</a>
-    <div class="tab active">Police Report</div>
+  <div class="tab-container d-flex justify-content-center py-1 mb-1">
+    <a href="#" class="tab active">Overview</a>
+    <div class="tab">Police Report</div>
   </div>
 
 
-  <!-- Victim Information -->
-  <div class="w-50 py-2 mb-4">
-    <div class="card text-center">
-      <div class="card-body d-flex align-items-center justify-content-center gap-3">
-        <div class="text-start">
-          <h4 class="card-title mb-0">Victim Information</h4>
-          <p class="card-text text-muted"><strong>First name: </strong><%= @match.bike.user.first_name %></p>
-          <p class="card-text text-muted"><strong>last name: </strong><%= @match.bike.user.last_name %></p>
-          <p class="card-text text-muted"><strong>Email: </strong><%= @match.bike.user.email %></p>
-          <p class="card-text text-muted"><strong>Phone number: </strong><%= @match.bike.user.phone_number %></p>
+  <!-- Report -->
+  <section id="search" class="search-form py-12">
+    <div class="d-flex justify-content-center align-items-center py-5">
+      <div class="card shadow-sm p-4 rounded-4" style="width: 100%; max-width: 600px;">
+        <div class="d-flex justify-content-center mb-3">
+          <div class="text-center mb-2 mt-4">
+            <h4 class="fw-bold mb-2 text-blue-primary">Report information</h4>
+            <p class="text-muted mb-0">Please make sure that all the datas are correct and submit.</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+          <%= simple_form_for @report, url: bike_match_reports_path(@match.bike, @match), html: { multipart: true } do |f| %>
+            <%= f.hidden_field :match_id, value: @match.id %>
+
+            <!-- Victim Info Display -->
+            <h5>Victim Information</h5>
+            <%= render partial: 'reports/info_block', locals: { title: "First Name", value: @match.bike.user.first_name } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Last Name", value: @match.bike.user.last_name } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Email", value: @match.bike.user.email } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Phone", value: @match.bike.user.phone_number } %>
+
+            <!-- Bike Info Display -->
+            <h5>Bike Information</h5>
+            <%= render partial: 'reports/info_block', locals: { title: "Brand", value: @match.bike.brand } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Frame Number", value: @match.bike.frame_number } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Model", value: @match.bike.model } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Color", value: @match.bike.color } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Location Lost", value: @match.bike.location_lost } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Stolen Date", value: @match.bike.stolen_date } %>
+
+            <!-- Match Info Display -->
+            <h5>Match Information</h5>
+            <%= render partial: 'reports/info_block', locals: { title: "Marketplace", value: @match.marketplace } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Seller", value: @match.seller } %>
+            <%= render partial: 'reports/info_block', locals: { title: "Sale Location", value: @match.location } %>
+
+            <!-- Submit -->
+            <div class="modal-footer border-0">
+              <%= f.button :submit, "Create Report", class: "btn btn-primary-custom" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Bike Information -->
-  <div class="w-50 py-2 mb-4">
-    <div class="card text-center">
-      <div class="card-body d-flex align-items-center justify-content-center gap-3">
-        <div class="text-start">
-          <h4 class="card-title mb-0">Bike Information</h4>
-          <p class="card-text text-muted"><strong>Bike brand: </strong><%= @match.bike.brand%></p>
-          <p class="card-text text-muted"><strong>Bike frame number: </strong><%= @match.bike.frame_number %></p>
-          <p class="card-text text-muted"><strong>Bike model: </strong><%= @match.bike.model %></p>
-          <p class="card-text text-muted"><strong>Location of the theft: </strong><%= @match.bike.location_lost %></p>
-          <p class="card-text text-muted"><strong>Date of the theft: </strong><%= @match.bike.stolen_date %></p>
-        </div>
-      </div>
-    </div>
-  </div>
-   <div class="w-50 py-2 mb-4">
-    <div class="card text-center">
-      <div class="card-body d-flex align-items-center justify-content-center gap-3">
-        <div class="text-start">
-          <h4 class="card-title mb-0">Theft Information</h4>
-          <p class="card-text text-muted"><strong>Marketplace where the bike was found: </strong><%= @match.marketplace %></p>
-          <p class="card-text text-muted"><strong>Name of the seller: </strong><%= @match.seller %></p>
-          <p class="card-text text-muted"><strong>Actual location: </strong><%= @match.location %></p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
+</div>
