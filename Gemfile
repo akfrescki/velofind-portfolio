@@ -55,6 +55,10 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "stripe"
 
+# pdf creation
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 group :development, :test do
   gem 'dotenv-rails', groups: [:development, :test]
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -7,13 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
+puts "Destroying Database ..."
 Report.destroy_all
 Match.destroy_all
 Promo.destroy_all
 Order.destroy_all
 Bike.destroy_all
 User.destroy_all
+
+puts "Database destroyed!"
 
 puts "Creating Users ..."
 
@@ -141,50 +143,3 @@ match03 = Match.create!(
 )
 
 puts "Matches created !"
-
-puts "Creating reports ..."
-
-report01 = Report.create!(
-  match_id: match01.id
-)
-
-report02 = Report.create!(
-  match_id: match02.id
-)
-report03 = Report.create!(
-  match_id: match03.id
-)
-
-puts "Reports created"
-
-puts "Creating Promos ..."
-
-lock_promo = Promo.create!(
-  name: "Kryptonite Evolution 1090 - 90cm",
-  description: "A super strong lock, perfect to protect your bike from theft",
-  promocode: "VeloFind-Summer-1",
-  website_url: "https://upway.be/products/chane-kryptonite-evolution-1090-90cm"
-)
-
-helmet_promo = Promo.create!(
-  name: "Black Helmet Kask Sintesi",
-  description: "A very elegant helmet, comfortable and protective",
-  promocode: "VeloFind-Summer-2",
-  website_url: "https://www.bobshop.com/fr/kask/casque-sintesi/noir/"
-)
-
-light_promo = Promo.create!(
-  name: "Led lamps for Bike - front and back",
-  description: "Rechargeable USB lamps, with different intensity and options",
-  promocode: "VeloFind-Summer-3",
-  website_url: "https://www.decathlon.be/fr/p/mp/tikkens/eclairage-velo-led-lumiere-velo-set-lampe-arriere-et-avant/_/R-p-e02f3e19-fc5e-4ce7-86c1-66d8725419c2?mc=e02f3e19-fc5e-4ce7-86c1-66d8725419c2_c1&c=noir"
-)
-
-bonus_lock_promo = Promo.create!(
-  name: "Kryptonite U-Lock Mini-7 with Flex",
-  description: "Compact and strong U-lock with cable — perfect for urban bikers",
-  promocode: "VeloFind-Bonus-4",
-  website_url: "https://example.com/kryptonite-u-lock-mini-7"
-)
-
-puts "Promos created !"

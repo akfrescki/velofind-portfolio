@@ -32,6 +32,9 @@
             <%# buttons without any action %>
             <%= link_to "Report Stolen", new_bike_match_report_path(@bike, match), class: "btn cta-button btn-lg w-100", style: "background-color: red; color: white;"%>
             <%= link_to "Go to Ad", "#", class: "btn cta-button btn-lg w-100", style: "background-color: grey; color: white;" %>
+            <% if match.report.present? %>
+              <%= link_to "See the Report", bike_match_report_path(match.bike, match, match.report), class: "btn btn-primary-custom" %>
+            <% end %>
           </div>
         </div>
       </div>

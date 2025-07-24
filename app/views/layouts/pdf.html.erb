@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= content_for?(:title) ? yield(:title) : "PDF" %></title>
+    <style>
+      body { font-family: "Helvetica", sans-serif; font-size: 12px; }
+      h1 { color: #444; }
+      /* Add more PDF-specific styles */
+    </style>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
