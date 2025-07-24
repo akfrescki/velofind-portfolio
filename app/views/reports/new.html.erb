@@ -38,25 +38,46 @@
 
             <!-- Victim Info Display -->
             <h5>Victim Information</h5>
-            <%= render partial: 'reports/info_block', locals: { title: "First Name", value: @match.bike.user.first_name } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Last Name", value: @match.bike.user.last_name } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Email", value: @match.bike.user.email } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Phone", value: @match.bike.user.phone_number } %>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "First Name", value: @match.bike.user.first_name } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Last Name", value: @match.bike.user.last_name } %>
+            </div>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "Email", value: @match.bike.user.email } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Phone", value: @match.bike.user.phone_number } %>
+            </div>
 
             <!-- Bike Info Display -->
             <h5>Bike Information</h5>
-            <%= render partial: 'reports/info_block', locals: { title: "Brand", value: @match.bike.brand } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Frame Number", value: @match.bike.frame_number } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Model", value: @match.bike.model } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Color", value: @match.bike.color } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Location Lost", value: @match.bike.location_lost } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Stolen Date", value: @match.bike.stolen_date } %>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "Brand", value: @match.bike.brand } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Frame Number", value: @match.bike.frame_number } %>
+            </div>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "Model", value: @match.bike.model } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Color", value: @match.bike.color } %>
+            </div>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "Location Lost", value: @match.bike.location_lost } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Stolen Date", value: @match.bike.stolen_date } %>
+            </div>
 
             <!-- Match Info Display -->
             <h5>Match Information</h5>
-            <%= render partial: 'reports/info_block', locals: { title: "Marketplace", value: @match.marketplace } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Seller", value: @match.seller } %>
-            <%= render partial: 'reports/info_block', locals: { title: "Sale Location", value: @match.location } %>
+
+            <div class="d-flex gap-3 mb-3">
+              <%= render partial: 'reports/info_block', locals: { title: "Marketplace", value: @match.marketplace } %>
+              <%= render partial: 'reports/info_block', locals: { title: "Seller", value: @match.seller } %>
+            </div>
+
+            <div class="d-flex gap-3 mb-4">
+              <%= render partial: 'reports/info_block', locals: { title: "Sale Location", value: @match.location } %>
+            </div>
 
             <!-- Submit -->
             <div class="modal-footer border-0">
