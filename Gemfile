@@ -57,7 +57,6 @@ gem "stripe"
 
 # pdf creation
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'dotenv-rails', groups: [:development, :test]
@@ -74,6 +73,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'wkhtmltopdf-binary'
 end
 
 group :test do
