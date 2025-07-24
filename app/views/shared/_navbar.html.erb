@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <!-- Velofind Logo -->
-    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+    <%= link_to dashboard_path, class: "navbar-brand d-flex align-items-center" do %>
       <%= cl_image_tag("velofindLOGOOFFICIAL_dmhiry", class: "logo-icon me-2", alt: "VeloFindLogo")  %>
     <% end %>
 
@@ -12,24 +12,15 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
 
-          <!-- Matches -->
-
-          <% if current_user.bikes.any? %>
-            <li class="nav-item">
-              <%= link_to "My Matches", bike_matches_path(current_user.bikes.first), class: "nav-link hover-shadow" %>
-            </li>
-          <% end %>
-
-
           <!-- Dashboard -->
           <li class="nav-item">
             <%= link_to "Dashboard", dashboard_path, class: "nav-link hover-shadow" %>
           </li>
 
-          <!-- Report a Match if bike + match exist-->
-          <% if current_user.bikes.any? && current_user.bikes.first.matches.any? %>
+          <!-- Matches -->
+          <% if current_user.bikes.any? %>
             <li class="nav-item">
-              <%= link_to "Report a Match", new_bike_match_report_path(current_user.bikes.first, current_user.bikes.first.matches.first), class: "nav-link hover-shadow" %>
+              <%= link_to "Matches", bike_matches_path(current_user.bikes.first), class: "nav-link hover-shadow" %>
             </li>
           <% end %>
 
