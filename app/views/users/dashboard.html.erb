@@ -84,7 +84,7 @@
 
         <% if bike.pictures.any? %>
         <div class="me-3">
-          <%= image_tag bike.pictures.first.url, alt: "Bike photo", class: "img-thumbnail", style: "width: 120px; height: auto;" %>
+          <%= cl_image_tag bike.pictures.first.key, alt: "Bike photo", class: "img-thumbnail", style: "width: 120px; height: auto;" %>
         </div>
       <% end %>
 
