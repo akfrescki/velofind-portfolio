@@ -1,12 +1,12 @@
 class MatchesController < ApplicationController
   # it will find the bike_id
-  before_action :set_bike
+  before_action :set_bike, except: [:all]
   # makes sure bike belongs to the current user logged in
-  before_action :authorize_bike
+  before_action :authorize_bike, except: [:all]
   before_action :require_payment, only: [:index]
 
   def index
-    @bike = Bike.find(params[:bike_id])
+    # @bike = Bike.find(params[:bike_id])
     @matches = @bike.matches
 
     if params[:session_id].present?
@@ -25,6 +25,11 @@ class MatchesController < ApplicationController
     end
 
     @has_paid = Order.exists?(user_id: current_user.id, bike_id: @bike.id, state: 'paid')
+  end
+
+  def all
+    @matches = Match.joins(:bike).where(bikes: { user: current_user }).order(created_at: :desc)
+    authorize :match, :all?
   end
 
   private

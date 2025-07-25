@@ -8,8 +8,9 @@
           <div class="d-flex justify-content-between align-items-start mb-3">
             <div class="d-flex align-items-center gap-2">
               <h5 class="fw-bold mb-0">Match #<%= index + 1 %></h5>
-              <span class="badge bg-danger text-white"><%= match.match_score %>% match</span>
+              <span class="badge bg-danger text-white"><%= match.match_score%>% match</span>
             </div>
+            <!--mock data, needs to adjust: -->
             <small class="text-muted">Found <%= time_ago_in_words(match.created_at) %> ago</small>
           </div>
 
@@ -17,8 +18,17 @@
           <div class="mb-3">
             <p class="mb-2"><strong>Platform:</strong> <%= match.marketplace %></p>
             <p class="mb-2"><strong>Price:</strong> €<%= match.price %></p>
-            <p class="mb-2"><strong>Seller:</strong> <%= match.seller %></p>
+            <p class="mb-2"><strong>Seller:</strong> <%= match.seller.presence || "Unknown" %></p>
             <p class=""><strong>Location:</strong> <%= match.location %></p>
+            <p class="mb-2"><strong>Matched Fields:</strong>
+              <% if match.matched_fields.present? %>
+                <% match.matched_fields.each do |field| %>
+                  <span class="badge bg-success"><%= field.to_s.humanize %></span>
+                <% end %>
+              <% else %>
+                <span class="text-muted">N/A</span>
+              <% end %>
+            </p>
           </div>
         </div>
 
@@ -29,8 +39,9 @@
           </div>
 
           <div class="d-flex gap-2">
-            <%# buttons without any action %>
-            <%= link_to "Report Stolen", new_bike_match_report_path(@bike, match), class: "btn cta-button btn-lg w-100", style: "background-color: red; color: white;"%>
+            <!-- buttons without any action -->
+            <%= link_to "Report Stolen", new_bike_match_report_path(match.bike, match), class: "btn cta-button btn-lg w-100", style: "background-color: red; color: white;" %>
+
             <% if match.report.present? %>
               <%= link_to "See Report", bike_match_report_path(match.bike, match, match.report), class: "btn btn-primary-custom w-100" %>
             <% end %>

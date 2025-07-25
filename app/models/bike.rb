@@ -7,45 +7,50 @@ class Bike < ApplicationRecord
   validates :brand, :model, :stolen_date, :location_lost, :status, :first_search_date, presence: true
 
   def find_matches(listings)
-    listings.map do |listing|
-      # check frame number match
-      bike_frame = frame_number&.downcase
-      listing_frame = listing[:frame_number]&.downcase
+    listings.each do |listing|
+      match_score, matched_fields = calculate_match_score(listing)
 
-      if bike_frame.present? && listing_frame.present? && bike_frame == listing_frame
-        # confirmed match
-        next { listing: listing, match_score: 100 }
+      # if no fram number, match gets 85% max
+      unless matched_fields.include?("frame_number")
+        match_score = [match_score, 85].min
       end
 
-      score = 0
+      # it will not show matches bellow 70
+      next if match_score < 70
 
-      # brand max 40%
-      if brand.present? && listing[:brand].present?
-        bike_words = brand.downcase.split
-        listing_words = listing[:brand].downcase.split
-        score += 40 if (bike_words & listing_words).any?
-      end
+      # will skip duplicates
+      existing = matches.find_by(marketplace_url: listing[:url])
+      next if existing.present?
 
-      # model max 40%
-      if model.present? && listing[:model].present?
-        bike_words = model.downcase.split
-        listing_words = listing[:model].downcase.split
-        score += 40 if (bike_words & listing_words).any?
-      end
+      # create new match in DB
+      matches.create!(
+        marketplace_url: listing[:url],
+        match_score: match_score,
+        marketplace: listing[:marketplace],
+        price: listing[:price],
+        seller: "Unknown",
+        location: listing[:location],
+        matched_fields: matched_fields
+      )
+    end
+  end
 
-      # color max 5%
-      if color.present? && listing[:color].present?
-        score += 5 if color.downcase == listing[:color].downcase
-      end
+  private
 
-      # can go max of 85 points in case of no frame number match
-      score = [score, 85].min
+  def calculate_match_score(listing)
+    score = 0
+    matched = []
 
-      # if score is below 70%, skip this listing
-      next if score < 70
+    if listing[:frame_number].present? && listing[:frame_number].to_s.downcase == frame_number.to_s.downcase
+      score += 100
+      matched << "frame_number"
+    else
+      matched << "brand"     if listing[:brand].to_s.downcase == brand.to_s.downcase && (score += 40)
+      matched << "model"     if listing[:model].to_s.downcase == model.to_s.downcase && (score += 40)
+      matched << "color"     if listing[:color].to_s.downcase == color.to_s.downcase && (score += 10)
+      matched << "location"  if listing[:location].to_s.downcase == location_lost.to_s.downcase && (score += 10)
+    end
 
-      # returns a hash with the listing and the match score
-      { listing: listing, match_score: score }
-    end.compact
+    [score, matched]
   end
 end

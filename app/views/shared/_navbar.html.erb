@@ -20,7 +20,7 @@
           <!-- Matches -->
           <% if current_user.bikes.any? %>
             <li class="nav-item">
-              <%= link_to "Matches", bike_matches_path(current_user.bikes.first), class: "nav-link hover-shadow" %>
+              <%= link_to "Matches", all_matches_path, class: "nav-link hover-shadow" %>
             </li>
           <% end %>
 
