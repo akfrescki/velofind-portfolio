@@ -3,6 +3,7 @@ class Bike < ApplicationRecord
   has_many :matches
   has_many_attached :pictures
   has_one :order
+  after_create :run_initial_matching
 
   validates :brand, :model, :stolen_date, :location_lost, :status, :first_search_date, presence: true
 
@@ -52,5 +53,31 @@ class Bike < ApplicationRecord
     end
 
     [score, matched]
+  end
+  def run_initial_matching
+    listings = [
+      {
+        url: "https://marktplaats.nl/fiets123",
+        brand: brand,
+        model: model,
+        frame_number: frame_number,
+        color: color,
+        location: location_lost,
+        marketplace: "Marktplaats",
+        price: 200
+      },
+      {
+        url: "https://facebook.com/bikes456",
+        brand: "Gazelle",
+        model: "Tour Populair",
+        frame_number: "XYZ789",
+        color: "Black",
+        location: "Rotterdam",
+        marketplace: "Facebook",
+        price: 300
+      }
+    ]
+
+    find_matches(listings)
   end
 end
