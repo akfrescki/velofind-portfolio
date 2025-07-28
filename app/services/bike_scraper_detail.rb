@@ -6,11 +6,9 @@ class BikeScraperDetail
     response = HTTParty.get(url)
     page = Nokogiri::HTML(response.body)
 
-    title = page.at_css('h1.text-contentPrimary')&.text&.strip
-
     {
-      brand: extract_brand(title),
-      model: extract_model(title),
+      brand: extract_brand(page),
+      model: extract_model(page),
       color: extract_color(page),
       marketplace: "Buycycle",
       marketplace_url: url,
@@ -21,14 +19,12 @@ class BikeScraperDetail
     }
   end
 
-  def self.extract_brand(title)
-    title&.split&.first
+  def self.extract_brand(page)
+    page.at_css('span.text-contentSecondary.font-regular.text-base')&.text&.strip
   end
 
-  def self.extract_model(title)
-    parts = title&.split
-    return nil unless parts && parts.length > 1
-    parts[1..].join(" ")
+  def self.extract_model(page)
+    page.at_css('h1.text-contentPrimary.font-medium.text-2xl')&.text&.strip
   end
 
   def self.extract_color(page)
