@@ -54,6 +54,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "cloudinary"
 gem "stripe"
+gem 'httparty'       # For basic HTTP requests
+gem 'nokogiri'       # For parsing HTML
 
 # pdf creation
 gem 'wicked_pdf'
