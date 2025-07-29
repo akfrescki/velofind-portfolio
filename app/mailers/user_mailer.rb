@@ -1,9 +1,8 @@
 class UserMailer < ApplicationMailer
-  default from: "notifications@example.com"
+  default from: "notifications@velofind.com"
 
   def send_report_email
     @report = params[:report]
-    @user = params[:user]
 
     pdf = WickedPdf.new.pdf_from_string(
       render_to_string(template: 'reports/show', layout: 'pdf')
