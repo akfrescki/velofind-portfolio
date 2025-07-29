@@ -32,4 +32,8 @@ class ReportPolicy < ApplicationPolicy
   def index?
     record.match.bike.user == user
   end
+
+  def email?
+    record.match.bike.user == user
+  end
 end

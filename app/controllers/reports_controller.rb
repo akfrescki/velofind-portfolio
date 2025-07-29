@@ -42,6 +42,17 @@ class ReportsController < ApplicationController
     end
   end
 
+  def email
+    @report = Report.find(params[:id])
+    @user = @report.match.bike.user
+    authorize @report
+
+    # Send the email with the report attached (assuming the mailer logic is already set)
+    UserMailer.with(user: @user, report: @report).send_report_email.deliver_now
+
+    redirect_to bike_match_reports_path, notice: "Email sent with PDF!"
+  end
+
   private
 
   def set_match
