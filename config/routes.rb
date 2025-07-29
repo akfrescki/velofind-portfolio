@@ -17,4 +17,8 @@ Rails.application.routes.draw do
 
   resources :promos, only: [:index]
   resources :orders, only: [:show, :create]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
