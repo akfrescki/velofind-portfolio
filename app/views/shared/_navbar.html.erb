@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <!-- Velofind Logo -->
-    <%= link_to dashboard_path, class: "navbar-brand d-flex align-items-center" do %>
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <%= image_tag("velofind_logo.svg", class: "logo-icon me-2", alt: "VeloFindLogo")  %>
     <% end %>
 
@@ -18,10 +18,10 @@
           </li>
 
           <!-- Matches -->
-          <% if current_user.bikes.any? %>
-            <li class="nav-item">
+          <%# <% if current_user.bikes.any? %>
+            <%# <li class="nav-item">
               <%= link_to "Matches", all_matches_path, class: "nav-link hover-shadow" %>
-            </li>
+            <%# </li>
           <% end %>
 
           <%# Drop down buttons %>
