@@ -3,7 +3,7 @@
 
     <!-- Velofind Logo -->
     <%= link_to dashboard_path, class: "navbar-brand d-flex align-items-center" do %>
-      <%= cl_image_tag("velofindLOGOOFFICIAL_dmhiry", class: "logo-icon me-2", alt: "VeloFindLogo")  %>
+      <%= image_tag("velofind_logo.svg", class: "logo-icon me-2", alt: "VeloFindLogo")  %>
     <% end %>
 
 
@@ -28,7 +28,7 @@
           <li class="nav-item dropdown">
           <a href="#" class="menu-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-            <%= cl_image_tag("Menu_pnldxz", class: "dropdown-icon", alt: "User Menu") %>
+            <%= image_tag("menu.png", class: "menu-icon", alt: "Menu")  %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile Settings", edit_user_registration_path, class: "dropdown-item" %>
