@@ -57,6 +57,8 @@ class Bike < ApplicationRecord
 
   # This method is called after the bike is created
   def run_initial_matching
+    # needs to be replaced with actual listings from a marketplace
+    # can run Listings.all.map
     listings = [
       {
         url: "https://marktplaats.nl/fiets123",
