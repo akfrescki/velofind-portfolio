@@ -14,6 +14,7 @@ Promo.destroy_all
 Order.destroy_all
 Bike.destroy_all
 User.destroy_all
+Listing.destroy_all
 
 puts "Database destroyed!"
 
@@ -143,3 +144,26 @@ match03 = Match.create!(
 )
 
 puts "Matches created !"
+
+
+puts "Seeding listings..."
+
+urls = BikeScraperIndex.listing_urls
+
+urls.each do |url|
+  data = BikeScraperDetail.scrape(url)
+
+  Listing.create!(
+    brand: data[:brand],
+    model: data[:model],
+    color: data[:color],
+    price: data[:price],
+    location: data[:location],
+    seller: data[:seller],
+    image_url: data[:image_url],
+    marketplace: data[:marketplace],
+    marketplace_url: data[:marketplace_url]
+  )
+end
+
+puts "Seeding complete"
