@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_25_145555) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_30_152856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,21 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_25_145555) do
     t.datetime "updated_at", null: false
     t.string "color"
     t.index ["user_id"], name: "index_bikes_on_user_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.string "color"
+    t.string "frame_number"
+    t.string "marketplace"
+    t.string "marketplace_url"
+    t.string "price"
+    t.string "seller"
+    t.string "location"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "matches", force: :cascade do |t|
