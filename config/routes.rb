@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :bikes, only: [:create, :edit, :update] do
     resources :matches, only: [:index] do
-      resources :reports, only: [:new, :create, :index, :show]
+      resources :reports, only: [:new, :create, :index, :show] do
+        post "email", on: :member
+      end
     end
   end
 
@@ -13,7 +15,10 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#dashboard', as: :dashboard
   get '/orders/checkout', to: 'orders#checkout', as: :checkout_order
 
-
   resources :promos, only: [:index]
   resources :orders, only: [:show, :create]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
