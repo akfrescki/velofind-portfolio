@@ -1,25 +1,28 @@
-  <h1>Bike Theft Report</h1>
+<div class="container my-5 text-center">
+  <h1 class="h1 mb-5">Bike Theft Report</h1>
+  <div class="row align-items-stretch">
+    <div class="col d-flex flex-column justify-content-between m-3 h-100">
+        <h3 class="mb-">Victim Information</h3>
+        <p class="mb-1"><strong> Full Name:</strong> <%= @report.match.bike.user.first_name %> <%= @report.match.bike.user.last_name %></p>
+        <p class="mb-1"><strong>Email:</strong> <%= @report.match.bike.user.email %></p>
+        <p class="mb-1"><strong>Phone:</strong> <%= @report.match.bike.user.phone_number %></p>
+    </div>
 
-  <div class="section">
-    <h2>Victim Information</h2>
-    <p><strong> Full Name:</strong> <%= @report.match.bike.user.first_name %> <%= @report.match.bike.user.last_name %></p>
-    <p><strong>Email:</strong> <%= @report.match.bike.user.email %></p>
-    <p><strong>Phone:</strong> <%= @report.match.bike.user.phone_number %></p>
-  </div>
+    <div class="col d-flex flex-column justify-content-between m-3 h-100">
+      <h3 class="mb-1">Bike Information</h3>
+      <p class="mb-1"><strong>Brand:</strong> <%= @report.match.bike.brand %></p>
+      <p class="mb-1"><strong>Model:</strong> <%= @report.match.bike.model %></p>
+      <p class="mb-1"><strong>Color:</strong> <%= @report.match.bike.color %></p>
+      <p class="mb-1"><strong>Frame Number:</strong> <%= @report.match.bike.frame_number %></p>
+      <p class="mb-1"><strong>Location Lost:</strong> <%= @report.match.bike.location_lost %></p>
+      <p class="mb-1"><strong>Date of Theft:</strong> <%= @report.match.bike.stolen_date %></p>
+    </div>
 
-  <div class="section">
-    <h2>Bike Information</h2>
-    <p><strong>Brand:</strong> <%= @report.match.bike.brand %></p>
-    <p><strong>Model:</strong> <%= @report.match.bike.model %></p>
-    <p><strong>Color:</strong> <%= @report.match.bike.color %></p>
-    <p><strong>Frame Number:</strong> <%= @report.match.bike.frame_number %></p>
-    <p><strong>Location Lost:</strong> <%= @report.match.bike.location_lost %></p>
-    <p><strong>Date of Theft:</strong> <%= @report.match.bike.stolen_date %></p>
+    <div class="col d-flex flex-column justify-content-between m-3 h-100">
+      <h3 class="mb-1">Potential Theft Information</h3>
+      <p class="mb-1"><strong>Marketplace:</strong> <%= @report.match.marketplace %></p>
+      <p class="mb-1"><strong>Seller:</strong> <%= @report.match.seller %></p>
+      <p class="mb-1"><strong>Actual Location:</strong> <%= @report.match.location %></p>
+    </div>
   </div>
-
-  <div class="section">
-    <h2>Potential Theft Information</h2>
-    <p><strong>Marketplace:</strong> <%= @report.match.marketplace %></p>
-    <p><strong>Seller:</strong> <%= @report.match.seller %></p>
-    <p><strong>Actual Location:</strong> <%= @report.match.location %></p>
-  </div>
+</div>
