@@ -1,8 +1,8 @@
 class MatchesController < ApplicationController
   # it will find the bike_id
-  before_action :set_bike, except: [:all]
+  before_action :set_bike
   # makes sure bike belongs to the current user logged in
-  before_action :authorize_bike, except: [:all]
+  before_action :authorize_bike
   before_action :require_payment, only: [:index]
 
   def index
