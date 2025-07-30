@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/matches', to: 'matches#all', as: :all_matches
   resources :bookings, only: [:edit, :update]
 
   get '/dashboard', to: 'users#dashboard', as: :dashboard

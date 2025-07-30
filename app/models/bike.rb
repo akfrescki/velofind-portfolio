@@ -54,6 +54,8 @@ class Bike < ApplicationRecord
 
     [score, matched]
   end
+
+  # This method is called after the bike is created
   def run_initial_matching
     listings = [
       {

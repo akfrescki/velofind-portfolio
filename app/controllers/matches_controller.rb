@@ -27,11 +27,6 @@ class MatchesController < ApplicationController
     @has_paid = Order.exists?(user_id: current_user.id, bike_id: @bike.id, state: 'paid')
   end
 
-  def all
-    @matches = Match.joins(:bike).where(bikes: { user: current_user }).order(created_at: :desc)
-    authorize :match, :all?
-  end
-
   private
 
   def set_bike
