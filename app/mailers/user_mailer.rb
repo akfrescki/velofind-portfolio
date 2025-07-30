@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
   default from: "notifications@velofind.com"
 
   def send_report_email
-    @report = params[:report]
+    @report = Report.find(params[:report][:id])
 
     pdf = WickedPdf.new.pdf_from_string(
       render_to_string(template: 'reports/show', layout: 'pdf')
