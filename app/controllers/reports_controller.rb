@@ -9,14 +9,18 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new(match: @match)
+    @bike = Bike.find(params[:bike_id])
+
     authorize @report
   end
 
   def create
     @report = Report.new(report_params)
+    @bike = Bike.find(params[:bike_id])
+
     authorize @report
     if @report.save
-      redirect_to bike_match_reports_path, notice: "Report created successfully"
+      redirect_to bike_match_report_path(@bike, @match, @report), notice: "Report created successfully"
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,6 +28,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    @bike = Bike.find(params[:bike_id])
     authorize @report
 
     respond_to do |f|
@@ -40,6 +45,24 @@ class ReportsController < ApplicationController
                disposition: 'attachment'
       end
     end
+  end
+
+  def find_or_create_and_redirect
+    @bike = Bike.find(params[:bike_id])
+    @match = Match.find(params[:match_id])
+
+    @report = Report.find_or_create_by(bike: @bike, match: @match)
+
+    redirect_to bike_match_report_path(@bike, @match, @report)
+  end
+
+  def find_or_create_and_redirect
+    @bike = Bike.find(params[:bike_id])
+    @match = Match.find(params[:match_id])
+
+    @report = Report.find_or_create_by(bike: @bike, match: @match)
+
+    redirect_to bike_match_report_path(@bike, @match, @report)
   end
 
   private
