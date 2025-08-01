@@ -19,6 +19,7 @@
       <div class="d-flex justify-content-end gap-2 px-3 pb-3">
         <%= link_to "Show Report", bike_match_report_path(report.match.bike.id, report.match.id, report.id), target: "_blank", class: "btn btn-outline-custom" %>
         <%= link_to "Download PDF", bike_match_report_path(report.match.bike.id, report.match.id, report.id, format: :pdf), target: "_blank", class: "btn btn-primary-custom" %>
+        <%= button_to 'Email Report PDF', email_bike_match_report_path(report.match.bike.id, report.match.id, report.id), method: :post, data: { turbo: false }, class: "btn btn-outline-custom" %>
       </div>
     </div>
   <% end %>

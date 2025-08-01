@@ -23,7 +23,7 @@
       <div class="card text-center">
         <div class="card-body d-flex align-items-center justify-content-center gap-3">
           <!-- I NEED TO CHANGE THE IMAGE!!!!! -->
-          <%= cl_image_tag("search_1_mvuaaq", alt: "Days Remaining Icon", class: "img-fluid", style: "width: 32px; height: 32px;") %>
+          <%= image_tag("search.png", alt: "Search Icon", class: "img-fluid", style: "width: 32px; height: 32px;") %>
           <div class="text-start">
             <h4 class="card-title mb-0"><%= @active_bikes %></h4>
             <p class="card-text text-muted">Bikes being searched</p>
@@ -62,7 +62,7 @@
     <div class="col-md-3">
       <div class="card text-center">
         <div class="card-body d-flex align-items-center justify-content-center gap-3">
-           <%= cl_image_tag("report_gsdpdk", alt: "Reports Icon", class: "img-fluid", style: "width: 32px; height: 32px;") %>
+           <%= image_tag("report.png", alt: "Reports Icon", class: "img-fluid", style: "width: 32px; height: 32px;") %>
           <div class="text-start">
             <!--Missing real data -->
             <h4 class="card-title mb-0">1</h4>
@@ -153,14 +153,14 @@
 
 <!-- discounts section -->
 <div class="container my-5">
-  <h2 class="h5 mb-3">Discounts</h2>
+  <h2 class="h5 mb-4">Discounts</h2>
 
   <% @promos.each do |promo| %>
     <div class="card mb-3">
       <div class="card-body d-flex justify-content-between align-items-center">
-        <div>
-          <strong><%= promo.name %></strong>
-          <p class="mb-0 text-muted"><%= promo.description %></p>
+        <div class="me-3">
+          <div class="fw-semibold"><%= promo.name %></div>
+          <div class="text-muted small mb-0"><%= promo.description %></div>
         </div>
         <button class="btn btn-outline-custom" data-bs-toggle="modal" data-bs-target="#promoModal-<%= promo.id %>">
           Get Promo code
@@ -174,17 +174,20 @@
         <div class="modal-content p-4">
           <div class="modal-header border-0">
             <h5 class="modal-title" id="promoModalLabel-<%= promo.id %>">Your Promo Code</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body text-center">
-            <div class="d-flex justify-content-center align-items-center mb-3 gap-2">
-              <div class="tab-container d-flex justify-content-center py-4 px-4">
-                <h4 class="mb-0 fw-bold me-2"><%= promo.promocode.upcase %></h4>
-                <button class="btn btn-outline-primary btn-sm" onclick="navigator.clipboard.writeText('<%= promo.promocode.upcase %>')" aria-label="Copy promo code">
-                  <i class="bi bi-clipboard"></i>
+            <div class="d-flex justify-content-center align-items-center mb-3">
+              <div class="border rounded-4 px-4 py-3 d-flex align-items-center bg-light" data-controller="promo-copy">
+                <h4 class="mb-0 me-3" data-promo-copy-target="code"><%= promo.promocode.upcase %></h4>
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-1 rounded-4"
+                        data-action="click->promo-copy#copy"
+                        aria-label="Copy promo code">
+                  <%= image_tag("copy-icon.svg", width: 16, height: 16, alt: "Copy icon") %>
                 </button>
               </div>
             </div>
-            <%= link_to "Go to the page to buy product", promo.website_url, class: "text-decoration-none", target: "_blank", rel: "noopener" %>
+            <%= link_to "Go to the page to buy product", promo.website_url, class: "btn btn-link", target: "_blank", rel: "noopener" %>
           </div>
         </div>
       </div>

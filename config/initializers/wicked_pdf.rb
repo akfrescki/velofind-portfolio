@@ -14,7 +14,6 @@ WickedPdf.configure do |config|
   # config.exe_path = '/usr/local/bin/wkhtmltopdf'
   #   or
   # config.exe_path = Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
-  config.exe_path = '/app/bin/wkhtmltopdf'
   # Needed for wkhtmltopdf 0.12.6+ to use many wicked_pdf asset helpers
   # config.enable_local_file_access = true
 
@@ -27,4 +26,11 @@ WickedPdf.configure do |config|
   # 'xvfb-run' command, in order to simulate an X server.
   #
   # config.use_xvfb = true
+end
+
+if Rails.env.production?
+  WickedPdf.config.merge!(
+    exe_path: "/app/bin/wkhtmltopdf"
+    # REQUIRED in production
+  )
 end
