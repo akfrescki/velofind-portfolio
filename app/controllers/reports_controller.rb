@@ -47,24 +47,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  def find_or_create_and_redirect
-    @bike = Bike.find(params[:bike_id])
-    @match = Match.find(params[:match_id])
-
-    @report = Report.find_or_create_by(bike: @bike, match: @match)
-
-    redirect_to bike_match_report_path(@bike, @match, @report)
-  end
-
-  def find_or_create_and_redirect
-    @bike = Bike.find(params[:bike_id])
-    @match = Match.find(params[:match_id])
-
-    @report = Report.find_or_create_by(bike: @bike, match: @match)
-
-    redirect_to bike_match_report_path(@bike, @match, @report)
-  end
-
   private
 
   def set_match
