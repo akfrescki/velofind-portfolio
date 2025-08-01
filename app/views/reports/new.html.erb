@@ -17,7 +17,7 @@
 <div class="container d-flex flex-column align-items-center">
 <!-- Overview and Police Report -->
   <div class="tab-container d-flex justify-content-center py-1 mb-1">
-    <a href="#" class="tab active">Overview</a>
+    <%= link_to "Overview", new_bike_match_report_path(@bike, @match), class: "tab active" %>
     <div class="tab">Police Report</div>
   </div>
 
@@ -37,7 +37,7 @@
             <%= f.hidden_field :match_id, value: @match.id %>
 
             <!-- Victim Info Display -->
-            <h5>Victim Information</h5>
+            <h6 class="section-title">👤 Victim Information</h6>
 
             <div class="d-flex gap-3 mb-3">
               <%= render partial: 'reports/info_block', locals: { title: "First Name", value: @match.bike.user.first_name } %>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Bike Info Display -->
-            <h5>Bike Information</h5>
+            <h6 class="section-title">🚲 Bicycle Details</h6>
 
             <div class="d-flex gap-3 mb-3">
               <%= render partial: 'reports/info_block', locals: { title: "Brand", value: @match.bike.brand } %>
@@ -68,7 +68,7 @@
             </div>
 
             <!-- Match Info Display -->
-            <h5>Match Information</h5>
+            <h6 class="section-title">⚠️ Match information</h6>
 
             <div class="d-flex gap-3 mb-3">
               <%= render partial: 'reports/info_block', locals: { title: "Marketplace", value: @match.marketplace } %>
