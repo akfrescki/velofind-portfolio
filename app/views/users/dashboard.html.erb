@@ -177,12 +177,14 @@
           </div>
           <div class="modal-body text-center">
             <div class="d-flex justify-content-center align-items-center mb-3 gap-2">
-              <div class="tab-container d-flex justify-content-center py-4 px-4">
-                <h4 class="mb-0 fw-bold me-2"><%= promo.promocode.upcase %></h4>
-                <button class="btn btn-outline-primary btn-sm" onclick="navigator.clipboard.writeText('<%= promo.promocode.upcase %>')" aria-label="Copy promo code">
-                  <i class="bi bi-clipboard"></i>
+              <div class="tab-container d-flex justify-content-center py-4 px-4" data-controller="promo-copy">
+                <h4 class="mb-0 fw-bold me-2" data-promo-copy-target="code"><%= promo.promocode.upcase %></h4>
+                <button class="btn btn-outline-primary btn-sm" data-action="click->promo-copy#copy" aria-label="Copy promo code">
+                <i class="bi bi-clipboard-check"></i>
                 </button>
               </div>
+            </div>
+
             </div>
             <%= link_to "Go to the page to buy product", promo.website_url, class: "text-decoration-none", target: "_blank", rel: "noopener" %>
           </div>
