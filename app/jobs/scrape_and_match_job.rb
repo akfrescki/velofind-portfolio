@@ -4,7 +4,7 @@ class ScrapeAndMatchJob < ApplicationJob
   def perform(bike_id)
     bike = Bike.find(bike_id)
 
-    # Optional: scrape fresh listings (or skip if already scraped)
+    # scrape fresh listings
     ScrapeAndSeedListingsJob.perform_now("")
 
     # Prepare listing hashes for matching
