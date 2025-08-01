@@ -23,6 +23,8 @@ class Bike < ApplicationRecord
       next if existing.present?
 
       # create new match in DB
+      # Update it!!!!!!!
+
       matches.create!(
         marketplace_url: listing[:url],
         match_score: match_score,
