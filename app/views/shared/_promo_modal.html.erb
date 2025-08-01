@@ -1,0 +1,17 @@
+<div class="modal fade" id="promoModal" tabindex="-1" aria-labelledby="promoModalLabel" aria-hidden="true" data-controller="promo-copy">
+  <div class="modal-dialog">
+    <div class="modal-content p-4">
+      <h5 id="promoModalLabel" class="modal-title mb-3">Your Promo Code</h5>
+
+      <p>
+        Use this code:
+        <span data-promo-copy-target="code" class="fw-bold"><%= @promo.code %></span>
+      </p>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-primary" data-action="promo-copy#copy">Copy Code</button>
+        <%= link_to "Use it now", some_product_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
