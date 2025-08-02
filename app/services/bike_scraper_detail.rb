@@ -5,7 +5,6 @@ class BikeScraperDetail
   def self.scrape(url)
     response = HTTParty.get(url)
     page = Nokogiri::HTML(response.body)
-    puts page
 
     {
       brand: extract_brand(page),

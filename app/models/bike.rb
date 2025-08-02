@@ -30,8 +30,12 @@ class Bike < ApplicationRecord
         match_score: match_score,
         marketplace: listing[:marketplace],
         price: listing[:price],
-        seller: "Unknown",
+        seller: listing[:seller].presence || "Unknown",
         location: listing[:location],
+        brand: listing[:brand],
+        model: listing[:model],
+        color: listing[:color],
+        frame_number: listing[:frame_number],
         matched_fields: matched_fields
       )
     end
