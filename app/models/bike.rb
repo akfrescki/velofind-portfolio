@@ -5,6 +5,7 @@ class Bike < ApplicationRecord
   has_one :order
 
   validates :brand, :model, :stolen_date, :location_lost, :status, :first_search_date, presence: true
+  after_create :run_matching
 
   def find_matches(listings)
     listings.each do |listing|
@@ -39,6 +40,10 @@ class Bike < ApplicationRecord
         matched_fields: matched_fields
       )
     end
+  end
+
+  def run_matching
+    find_matches(Listing.all)
   end
 
   private
