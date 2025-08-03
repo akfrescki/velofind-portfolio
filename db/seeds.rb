@@ -146,24 +146,25 @@ match03 = Match.create!(
 puts "Matches created !"
 
 
-puts "Seeding listings..."
+require_relative '../lib/bike_index_scraper.rb'
 
-urls = BikeScraperIndex.listing_urls
+puts "Fetching up to 100 Trek bikes from Bike Index..."
 
-urls.each do |url|
-  data = BikeScraperDetail.scrape(url)
+bikes = BikeIndexScraper.fetch_bikes_by_brand(brand: "Trek")
 
+bikes.each do |bike|
   Listing.create!(
-    brand: data[:brand],
-    model: data[:model],
-    color: data[:color],
-    price: data[:price],
-    location: data[:location],
-    seller: data[:seller],
-    image_url: data[:image_url],
-    marketplace: data[:marketplace],
-    marketplace_url: data[:marketplace_url]
+    brand: bike["manufacturer_name"],
+    model: bike["frame_model"],
+    color: (bike["frame_colors"] || []).join(", "),
+    frame_number: bike["serial"],
+    marketplace: "bikeindex.org",
+    marketplace_url: "https://bikeindex.org/bikes/#{bike['id']}",
+    price: nil,
+    seller: nil,
+    location: bike["stolen_location"],
+    image_url: bike["large_img"]
   )
 end
 
-puts "Seeding complete"
+puts "Seeded #{bikes.size} Trek listings."

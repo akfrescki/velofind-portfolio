@@ -8,7 +8,6 @@ class BikesController < ApplicationController
     authorize @bike
 
     if @bike.save
-      ScrapeAndMatchJob.perform_later(@bike.id)
       redirect_to dashboard_path, notice: "Bike submitted successfully."
     else
       render "pages/home", status: :unprocessable_entity
