@@ -5,18 +5,21 @@
   <p class="text-muted mb-4">
     Matches for your <strong><%= "#{@bike.brand} #{@bike.model}" %> Frame: <%= @bike.frame_number %></strong>
   </p>
-<section class="matches-section py-5 px-3 px-md-5">
-  <div class="row justify-content-center">
-    <% if @matches.any? %>
-      <% @matches.each_with_index do |match, index| %>
-        <%= render partial: "match", locals: { match: match, index: index } %>
+
+  <!-- Matches list -->
+  <section class="matches-section py-5 px-3 px-md-5">
+    <div class="row justify-content-center">
+      <% if @matches.any? %>
+        <% @matches.each_with_index do |match, index| %>
+          <%= render partial: "match", locals: { match: match, index: index } %>
+        <% end %>
+      <% else %>
+        <div class="d-flex justify-content-center align-items-center">
+          <p>No matches found yet 😞 </p>
+        </div>
       <% end %>
-    <% else %>
-      <div class="d-flex justify-content-center align-items-center">
-        <p>No matches found yet 😞 </p>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  </section>
 </div>
 
 <!-- Payment pop-up -->

@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
   before_action :require_payment, only: [:index]
 
   def index
-    @bike = Bike.find(params[:bike_id])
+    # @bike = Bike.find(params[:bike_id])
     @matches = @bike.matches
 
     if params[:session_id].present?

@@ -380,9 +380,9 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
-  nokogiri
   letter_opener
   letter_opener_web
+  nokogiri
   pg (~> 1.1)
   puma (>= 5.0)
   pundit

@@ -27,4 +27,8 @@ class MatchPolicy < ApplicationPolicy
   def show?
     record.bike.user == user
   end
+
+  def all?
+    user.present?
+  end
 end
