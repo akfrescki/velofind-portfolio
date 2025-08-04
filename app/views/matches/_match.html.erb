@@ -51,7 +51,7 @@
       <div class="col-md-4 d-flex flex-column align-items-center">
 
         <!-- Image container -->
-        <div class="bg-light rounded-4 mb-3 w-100 d-flex justify-content-center" style="height: 200px; padding: 8px; overflow: hidden;">
+        <div class="bg-light rounded-4 mb-3 w-100 d-flex justify-content-center align-items-center" style="height: 200px; padding: 8px; overflow: hidden;">
           <% if match.image_url.present? %>
             <img
               src="<%= match.image_url %>"
@@ -60,9 +60,10 @@
               style="object-fit: cover; border-radius: 4px;"
             />
           <% else %>
-            <div class="text-muted text-center p-4">No image available</div>
+            <div class="text-muted text-center">No image available</div>
           <% end %>
         </div>
+
 
         <!-- Buttons -->
         <div class="d-flex justify-content-between w-100" style="max-width: 400px;">
