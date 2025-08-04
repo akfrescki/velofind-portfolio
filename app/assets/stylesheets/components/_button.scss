@@ -56,3 +56,24 @@
     text-decoration: none;
   }
 }
+
+.btn-danger {
+  background-color: red;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  border-radius: 0.5rem;
+  border: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-green-secondary {
+  background-color: rgba(47, 194, 47, 0.578);
+  padding: 6px 12px;
+  color: white;
+  font-weight: 500;
+  border-radius: 4px;
+}
