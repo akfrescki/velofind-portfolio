@@ -33,7 +33,7 @@ class ReportPolicy < ApplicationPolicy
     record.match.bike.user == user
   end
 
-  def email?
+  def send_email?
     record.match.bike.user == user
   end
 end
