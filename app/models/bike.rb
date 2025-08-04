@@ -37,6 +37,7 @@ class Bike < ApplicationRecord
         model: listing[:model],
         color: listing[:color],
         frame_number: listing[:frame_number],
+        image_url: listing[:image_url],
         matched_fields: matched_fields
       )
     end
