@@ -1,0 +1,20 @@
+<h1>Police Report Summary</h1>
+<h2>Victim Information</h2>
+<p>Full name : <%= @report.match.bike.user.first_name %> <%=  @report.match.bike.user.last_name%></p>
+<p>Email : <%= @report.match.bike.user.email %></p>
+<p>Phone number : <%= @report.match.bike.user.phone_number %></p>
+
+<h2>Bike Information</h2>
+<p>Brand : <%= @report.match.bike.brand %></p>
+<p>Model : <%= @report.match.bike.model %></p>
+<p>Frame number : <%= @report.match.bike.frame_number %></p>
+<p>Color : <%= @report.match.bike.color %></p>
+<p>Location where the bike was stolen : <%= @report.match.bike.location_lost %></p>
+<p>Theft Date : <%= @report.match.bike.stolen_date %></p>
+
+<h2>Evidence Gathered</h2>
+<p>Marketplace : <%= @report.match.marketplace %></p>
+<p>Seller : <%= @report.match.seller %></p>
+<p>Location : <%= @report.match.location %></p>
+<p>Posted Date : 2 days ago</p>
+<p>Match confidence : 92%</p>

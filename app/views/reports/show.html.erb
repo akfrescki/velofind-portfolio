@@ -75,7 +75,7 @@
     <!-- Buttons -->
     <div class="text-center mt-4">
       <%= link_to "Download PDF", bike_match_report_path(@report.match.bike.id, @report.match.id, @report.id, format: :pdf), target: "_blank", class: "btn btn-primary-custom me-2" %>
-      <button class="btn btn-outline-custom">Email to Police</button>
+      <%= button_to 'Email to Police', send_email_bike_match_report_path(@report.match.bike.id, @report.match.id, @report.id), method: :post, class: "btn btn-outline-custom me-2" %>
     </div>
   </div>
 </div>

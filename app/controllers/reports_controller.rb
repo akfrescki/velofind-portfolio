@@ -30,6 +30,13 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     @bike = Bike.find(params[:bike_id])
     authorize @report
+    generate_pdf
+  end
+
+  def generate_pdf
+    @report = Report.find(params[:id])
+    @bike = Bike.find(params[:bike_id])
+    authorize @report
 
     respond_to do |f|
       f.html
@@ -39,7 +46,7 @@ class ReportsController < ApplicationController
       f.pdf do
         render pdf: "report_#{@report.id}",
                filename: "report_#{@report.id}.pdf",
-               template: "reports/show",
+               template: "reports/pdf",
                formats: [:html],
                layout: "pdf",
                disposition: 'attachment'
@@ -47,14 +54,13 @@ class ReportsController < ApplicationController
     end
   end
 
-  def email
+  def send_email
     @report = Report.find(params[:id])
     @user = @report.match.bike.user
+    @bike = Bike.find(params[:bike_id])
     authorize @report
-
-    # Send the email with the report attached (assuming the mailer logic is already set)
-    UserMailer.with(user: @user, report: @report).send_report_email.deliver_now
-
+    generate_pdf
+    ReportMailer.send_report(@report, @report.match).deliver_now
     redirect_to bike_match_reports_path, notice: "Email sent with PDF!"
   end
 

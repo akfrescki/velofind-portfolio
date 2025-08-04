@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :bikes, only: [:create, :edit, :update] do
     resources :matches, only: [:index] do
       resources :reports, only: [:new, :create, :index, :show] do
-        post "email", on: :member
+        post "send_email", on: :member
       end
     end
   end
