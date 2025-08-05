@@ -48,18 +48,6 @@ puts "Users created !"
 
 puts "Creating Bikes ..."
 
-sport_bike_helene = Bike.create!(
-  brand: "Trek",
-  frame_number: "TR0475/022",
-  model: "Dual Sport 2",
-  stolen_date: Time.now - 24.hours,
-  location_lost: "Paris",
-  status: 0,
-  first_search_date: Time.now,
-  color: "Blue",
-  user_id: helene.id
-)
-
 electric_bike_ana = Bike.create!(
   brand: "EXS Bike",
   frame_number: "CB7875/024",
@@ -113,25 +101,6 @@ puts "Promos created !"
 
 puts "Creating matches ..."
 
-match01 = Match.create!(
-  bike_id: sport_bike_helene.id,
-  marketplace_url: "https://www.leboncoin.fr/",
-  marketplace: "Le bon coin",
-  match_score: 90,
-  price: 450,
-  seller: "Anonymous Seller 1",
-  location: "Lille"
-)
-
-match02 = Match.create!(
-  bike_id: sport_bike_helene.id,
-  marketplace_url: "https://buycycle.com/nl-be",
-  marketplace: "Buycycle",
-  match_score: 75,
-  price: 380,
-  seller: "Anonymous Seller 2",
-  location: "Kortrijk"
-)
 
 match03 = Match.create!(
   bike_id: electric_bike_ana.id,

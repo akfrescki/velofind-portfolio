@@ -8,7 +8,7 @@ class BikeIndexScraper
     response = get('/search', query: {
       manufacturer: brand,
       per_page: 100,
-      page: 1
+      page: 10
     })
 
     return [] unless response.success?
