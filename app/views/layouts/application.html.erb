@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
 
@@ -23,7 +23,9 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <main class="flex-grow-1">
+      <%= yield %>
+    </main>
     <%= render "shared/footer" %>
   </body>
 </html>
