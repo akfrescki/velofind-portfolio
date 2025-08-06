@@ -35,7 +35,7 @@
   <li><strong>Seller:</strong> <%= @report.match.seller %></li>
   <li><strong>Location:</strong> <%= @report.match.location %></li>
   <li><strong>Match Confidence:</strong> <%= @report.match.match_score %>% </li>
-  <li><strong>Matched Fields:</strong> <%= @report.match.matched_fields.map(&:humanize).to_sentence %></li>
+  <li><strong>Matched Fields:</strong> <%= @report.match.matched_fields&.map(&:humanize)&.to_sentence || "No matched fields" %> </li>
 </ul>
 
 <hr>
