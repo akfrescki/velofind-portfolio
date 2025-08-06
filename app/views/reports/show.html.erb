@@ -61,8 +61,8 @@
         <p class="mb-1"><strong>Marketplace:</strong> <%= @report.match.marketplace %></p>
         <p class="mb-1"><strong>Seller:</strong> <%= @report.match.seller %></p>
         <p class="mb-1"><strong>Location:</strong> <%= @report.match.location %></p>
-        <p class="mb-1"><strong>Match Confidence:</strong> 92%</p> <!-- Example value -->
-        <p class="mb-0"><strong>Posted Date:</strong> 2 days ago</p> <!-- Example value -->
+        <p class="mb-1"><strong>Match Confidence:</strong> <%= @report.match.match_score %>% </p>
+        <p class="mb-1"><strong>Matched Fields:</strong> <%= @report.match.matched_fields.map(&:humanize).to_sentence %></p>
       </div>
     </div>
 
