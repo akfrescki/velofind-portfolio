@@ -31,6 +31,20 @@
             <i class="fas fa-tag me-3 text-muted"></i>
             <span class="fw-medium"><%= match.model.presence || "Unknown" %></span>
           </li>
+          <!-- If frame number present, it will show the frame number -->
+          <% if match.matched_fields&.include?("frame_number") && match.frame_number.present? %>
+            <li class="d-flex align-items-center mb-3">
+              <i class="fas fa-hashtag me-3 text-muted"></i>
+              <span class="fw-medium"><%= match.frame_number %></span>
+            </li>
+          <% end %>
+          <!-- If color present, it will show the color -->
+          <% if match.matched_fields&.include?("color") && match.color.present? %>
+            <li class="d-flex align-items-center mb-3">
+              <i class="fas fa-palette me-3 text-muted"></i>
+              <span class="fw-medium"><%= match.color %></span>
+            </li>
+          <% end %>
           <li class="d-flex align-items-center mb-3">
             <i class="fas fa-map-marker-alt me-3 text-muted"></i>
             <span class="fw-medium"><%= match.location %></span>
@@ -67,6 +81,7 @@
         </div>
 
         <!-- Buttons -->
+
         <div class="d-flex justify-content-between w-100">
           <%= link_to "Report Stolen",
               new_bike_match_report_path(match.bike, match),
@@ -80,6 +95,26 @@
           <% end %>
         </div>
 
+        <% if match.report.present? %>
+          <div class="d-flex justify-content-between w-100" style="max-width: 400px;">
+            <%= link_to "Report Stolen",
+                new_bike_match_report_path(match.bike, match),
+                class: "btn btn-danger w-50 me-1 text-nowrap px-1",
+                style: "height: 40px;" %>
+
+              <%= link_to "See Report",
+                  bike_match_report_path(match.bike, match, match.report),
+                  class: "btn btn-primary-custom w-50 ms-1 text-nowrap px-1 d-flex align-items-center justify-content-center text-center",
+                  style: "height: 40px;" %>
+          </div>
+        <% else %>
+          <div class="w-100">
+            <%= link_to "Report Stolen",
+                new_bike_match_report_path(match.bike, match),
+                class: "btn btn-danger w-100 me-1 text-nowrap px-1",
+                style: "height: 40px;" %>
+          </div>
+        <% end %>
       </div>
 
     </div>

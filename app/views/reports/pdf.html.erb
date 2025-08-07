@@ -34,8 +34,8 @@
   <li><strong>Marketplace:</strong> <%= @report.match.marketplace %></li>
   <li><strong>Seller:</strong> <%= @report.match.seller %></li>
   <li><strong>Location:</strong> <%= @report.match.location %></li>
-  <li><strong>Match Confidence:</strong> 92%</li> <!-- static example, update if dynamic -->
-  <li><strong>Posted Date:</strong> 2 days ago</li> <!-- static example, update if dynamic -->
+  <li><strong>Match Confidence:</strong> <%= @report.match.match_score %>% </li>
+  <li><strong>Matched Fields:</strong> <%= @report.match.matched_fields&.map(&:humanize)&.to_sentence || "No matched fields" %> </li>
 </ul>
 
 <hr>
