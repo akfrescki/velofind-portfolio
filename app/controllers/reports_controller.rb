@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
     authorize @report
     generate_pdf
     ReportMailer.send_report(@report, @report.match).deliver_now
-    redirect_to bike_match_reports_path, notice: "Email sent with PDF!"
+    redirect_to dashboard_path, flash: { notice: "Email sent with PDF!" }
   end
 
   private
