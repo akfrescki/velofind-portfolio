@@ -81,20 +81,6 @@
         </div>
 
         <!-- Buttons -->
-
-        <div class="d-flex justify-content-between w-100">
-          <%= link_to "Report Stolen",
-              new_bike_match_report_path(match.bike, match),
-              class: "btn btn-danger w-50 me-1 text-nowrap px-1 ", style: "height: 40px; font-size: 1rem;" %>
-
-          <% if match.report.present? %>
-            <%= link_to "See Report",
-                bike_match_report_path(match.bike, match, match.report),
-                class: "btn btn-primary-custom w-50 ms-1 text-nowrap px-1 d-flex align-items-center justify-content-center text-center",
-                style: "height: 40px; font-size: 1rem;" %>
-          <% end %>
-        </div>
-
         <% if match.report.present? %>
           <div class="d-flex justify-content-between w-100" style="max-width: 400px;">
             <%= link_to "Report Stolen",
@@ -115,8 +101,7 @@
                 style: "height: 40px;" %>
           </div>
         <% end %>
-      </div>
-
+      </div
     </div>
   </div>
 </div>
