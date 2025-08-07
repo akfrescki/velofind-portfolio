@@ -21,5 +21,9 @@ class UsersController < ApplicationController
     @confirmed_matches = @bikes.sum do |bike|
       bike.matches.count { |match| match.report.present? }
     end
+
+    @reports_count = @bikes.sum do |bike|
+      bike.matches.count { |match| match.report.present? }
+    end
   end
 end
