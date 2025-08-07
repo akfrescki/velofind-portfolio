@@ -11,6 +11,6 @@ class ReportMailer < ApplicationMailer
 
     attachments["report_#{@report.id}.pdf"] = pdf
 
-    mail(to: 'axelhouillier@yahoo.fr', subject: 'Your Police Report PDF')
+    mail(to: 'karolinefrescki@gmail.com', subject: 'Your Velofind lost bike report')
   end
 end
