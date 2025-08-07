@@ -37,3 +37,18 @@ body {
   font-weight: 600;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
+
+.alert-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1055;
+}
+
+.toast {
+  background-color: #0069ff !important; /* Replace with your exact brand blue */
+  color: white !important; /* Make text white for contrast */
+  border-radius: 8px; /* Optional: keep the rounded corners */
+  box-shadow: 0 0 10px rgba(0, 105, 255, 0.5); /* Optional: subtle glow effect */
+}

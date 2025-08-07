@@ -73,7 +73,7 @@
           <%= link_to "Download PDF", bike_match_report_path(@report.match.bike.id, @report.match.id, @report.id, format: :pdf), target: "_blank", class: "btn btn-primary-custom" %>
 
           <%= form_with url: send_email_bike_match_report_path(@report.match.bike.id, @report.match.id, @report.id), method: :post, class: "d-inline" do %>
-            <%= submit_tag 'Email to Police', class: "btn btn-outline-custom" %>
+            <%= submit_tag 'PDF via Email', class: "btn btn-outline-custom" %>
           <% end %>
         </div>
       </div>
