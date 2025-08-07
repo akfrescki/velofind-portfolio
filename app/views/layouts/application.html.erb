@@ -18,8 +18,8 @@
 
     <%# Show back button only if referer exists and current page is not the root path %>
     <% if request.referer.present? && !current_page?(root_path) %>
-      <div class="container mt-3">
-        <%= link_to "← Go back", request.referer, class: "btn btn-outline-secondary btn-sm back-button" %>
+      <div class="container mt-3 d-flex justify-content-end">
+      <%= link_to "Go back", request.referer, class: "back-button" %>
       </div>
     <% end %>
 
